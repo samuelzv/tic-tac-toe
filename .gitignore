@@ -9,3 +9,5 @@ angular_app/build/
 
 # Directory created by dartdoc
 angular_app/doc/api/
+
+settings.json
