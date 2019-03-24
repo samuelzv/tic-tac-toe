@@ -1,0 +1,1 @@
+enum CellValue { empty, nought, cross }
