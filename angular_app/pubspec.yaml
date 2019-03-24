@@ -2,7 +2,7 @@ name: angular_app
 description: A web app that uses AngularDart Components
 # version: 1.0.0
 # homepage: https://www.example.com
-# author: Sam Zuniga <email@example.com>
+# author: Sam Zuniga <samuelzv@gmail.com>
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
@@ -18,3 +18,4 @@ dev_dependencies:
   build_web_compilers: ^1.0.0
   pedantic: ^1.0.0
   test: ^1.5.1
+  sass_builder: ^2.1.2
