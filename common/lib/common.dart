@@ -3,6 +3,7 @@
 /// More dartdocs go here.
 library common;
 
-export 'src/common_base.dart';
+export 'src/models/models.dart';
+export 'src/game_bloc/game_bloc.dart';
 
 // TODO: Export any libraries intended for clients of this package.

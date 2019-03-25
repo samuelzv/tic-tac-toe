@@ -1,9 +1,15 @@
 import './cell_value.dart';
 
 class Cell {
-  final int row;
-  final int column;
-  final CellValue value;
+  CellValue _value;
 
-  Cell(this.row, this.column, this.value);
+  Cell(this._value);
+
+  void setValue(CellValue newValue) {
+    _value = newValue;
+  }
+
+  CellValue getValue() {
+    return _value;
+  }
 }
