@@ -2,8 +2,8 @@
   <h1>This will be the board game</h1>
 </div>
 
-<div>
-  <div></div>
-  <div></div>
-  <div></div>
+<div *ngFor="let row of (gameBloc | bloc).board">
+  <div *ngFor="let column of row">
+    <h2>Column</h2>
+  </div>
 </div>

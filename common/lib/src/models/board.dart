@@ -7,6 +7,8 @@ class Board {
 
   Board(this.size) {
     _board =_getInitialBoard();
+    print('Setting up Initial board');
+    print(_board);
   }
 
   _getInitialBoard() {
