@@ -1,21 +1,35 @@
+$game-board-border-color: black;
+$game-board-border-size: 3px;
+$game-board-border-style: solid;
+
 .game-board {
-    // border: 1px solid black;
 }
+    .game-board__column {
+        border: $game-board-border-size $game-board-border-style $game-board-border-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+    }
+
     .game-board__row {
         display: flex;
         justify-content: space-around;
-        border: 1px solid black;
-    }
-    .game-board__row:first-of-type {
-        border-top-color: transparent;
     }
 
-    .game-board__row:last-of-type {
-        border-bottom-color: transparent; 
-    }
+        .game-board__row .game-board__column:first-of-type {
+            border-left: $game-board-border-size $game-board-border-style transparent; 
+        }
 
-    .game-board__column {
-        // border: 1px solid black;
-        width: 100%;
-        height: 80px;
-    }
+        .game-board__row .game-board__column:last-of-type {
+            border-right: $game-board-border-size $game-board-border-style transparent; 
+        }
+
+        .game-board__row:first-of-type .game-board__column {
+            border-top: $game-board-border-size $game-board-border-style transparent;
+        }
+
+        .game-board__row:last-of-type .game-board__column {
+            border-bottom: $game-board-border-size $game-board-border-style transparent;
+        }
