@@ -6,12 +6,16 @@ import 'package:angular_bloc/angular_bloc.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'game-board',
-  styleUrls: ['game_board_component.css'],
-  templateUrl: 'game_board_component.html',
+  selector: 'board',
+  styleUrls: [
+    'board_component.css',
+    'material_custom.css'
+  ],
+  templateUrl: 'board_component.html',
   directives: [
     MaterialCheckboxComponent,
     MaterialFabComponent,
+    MaterialButtonComponent,
     MaterialIconComponent,
     materialInputDirectives,
     NgFor,
@@ -19,9 +23,9 @@ import 'package:common/common.dart';
   ],
   pipes: [BlocPipe]
 )
-class GameBoardComponent implements OnInit, OnDestroy {
+class BoardComponent implements OnInit, OnDestroy {
   GameBloc gameBloc;
-  GameBoardComponent();
+  BoardComponent();
 
   @override
   void ngOnInit() async {

@@ -1,0 +1,9 @@
+<div class="board">
+  <div *ngFor="let row of (gameBloc | bloc).board" class="board__row">
+    <div *ngFor="let column of row" class="board__column">
+      <material-fab mini raised class="">
+          <!-- <material-icon icon="check"></material-icon> -->
+      </material-fab>
+    </div>
+  </div>
+</div>

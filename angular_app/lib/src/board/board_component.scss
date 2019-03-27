@@ -1,0 +1,38 @@
+$board-border-color: black;
+$board-border-size: 3px;
+$board-border-style: solid;
+
+.board {
+    padding: 20px;
+}
+    .board__column {
+        border: $board-border-size $board-border-style $board-border-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+    }
+      
+    .board__row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+        .board__row .board__column:first-of-type {
+            border-left: $board-border-size $board-border-style transparent; 
+        }
+
+        .board__row .board__column:last-of-type {
+            border-right: $board-border-size $board-border-style transparent; 
+        }
+
+        .board__row:first-of-type .board__column {
+            border-top: $board-border-size $board-border-style transparent;
+        }
+
+        .board__row:last-of-type .board__column {
+            border-bottom: $board-border-size $board-border-style transparent;
+        }
+
+      
