@@ -12,6 +12,7 @@ import 'package:common/common.dart';
     'material_custom.css'
   ],
   templateUrl: 'board_component.html',
+  exports: [CellValue],
   directives: [
     MaterialCheckboxComponent,
     MaterialFabComponent,
@@ -25,12 +26,17 @@ import 'package:common/common.dart';
 )
 class BoardComponent implements OnInit, OnDestroy {
   GameBloc gameBloc;
+  GameState gameState;
   BoardComponent();
 
   @override
   void ngOnInit() async {
     gameBloc = GameBloc();
-    gameBloc.dispatch(GameEvent.start);
+
+    gameBloc.state
+      .listen((GameState state) => gameState = state);
+
+    gameBloc.dispatch(GameStartBlocEvent(3));
   }
 
   @override
@@ -38,5 +44,7 @@ class BoardComponent implements OnInit, OnDestroy {
     gameBloc.dispose();
   }
 
-
+  void onChoose(int row, int column) {
+    gameBloc.dispatch(GameMoveBlocEvent(row, column, CellValue.cross));
+  }
 }

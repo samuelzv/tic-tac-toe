@@ -1,9 +1,14 @@
-<div class="board">
-  <div *ngFor="let row of (gameBloc | bloc).board" class="board__row">
-    <div *ngFor="let column of row" class="board__column">
-      <material-fab mini raised class="">
-          <!-- <material-icon icon="check"></material-icon> -->
-      </material-fab>
+<div class="board" *ngIf="gameState != null && gameState.cells != null">
+  <template ngFor let-row [ngForOf]="gameState.cells" let-rowIndex="index">
+    <div class="board__row">
+      <template ngFor let-column [ngForOf]="row" let-columnIndex="index" class="board__column">
+        <div class="board__column">
+          <material-fab mini raised class="" (trigger)="onChoose(rowIndex, columnIndex)">
+              <material-icon [icon]="gameState.cells[rowIndex][columnIndex].getValue() == CellValue.cross ? 'check' : ''">
+              </material-icon>
+          </material-fab>
+        </div>
+      </template>
     </div>
-  </div>
+  </template>
 </div>

@@ -2,23 +2,24 @@ import 'cell.dart';
 import 'cell_value.dart';
 
 class Board {
-  final int size;
-  List<List<Cell>> _board;
+  List<List<Cell>> _cells;
 
-  Board(this.size) {
-    _board =_getInitialBoard();
-    print('Setting up Initial board');
-    print(_board);
+  Board();
+
+  void setInitialCells(size) {
+    _cells =_getInitialCells(size);
   }
 
-  _getInitialBoard() {
+  _getInitialCells(int size) {
     return List<List<Cell>>.generate(size, (int row) => 
       List<Cell>.generate(size, (int column) => Cell(CellValue.empty)));
   }
 
   void setCellValue(int row, int column, CellValue value) {
-    _board[row][column].setValue(value);
+    _cells[row][column].setValue(value);
   }
 
-  List<List<Cell>> getBoard() => _board;
+  List<List<Cell>> getCells() => _cells;
+
+  void setCells(List<List<Cell>> cells) => _cells = cells;
 }
