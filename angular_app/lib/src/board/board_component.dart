@@ -35,11 +35,7 @@ class BoardComponent implements OnInit, OnDestroy {
     gameBloc = GameBloc();
 
     gameBloc.state
-      .listen((GameState state) { 
-        print('The state is');
-        print(state.cells);
-        gameState = state; 
-      });
+      .listen((GameState state) => gameState = state);
 
     gameBloc.dispatch(GameStartBlocEvent(3));
   }

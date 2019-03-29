@@ -14,5 +14,5 @@ import 'src/board/board_component.dart';
   ],
 )
 class AppComponent {
-  // Nothing here yet. All logic is in TodoListComponent.
+  String welcomeText = 'Welcome to the Noughts and Crosses game';
 }
