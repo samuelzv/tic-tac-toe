@@ -5,6 +5,11 @@ $board-border-style: solid;
 .board {
     padding: 20px;
 }
+    .board--disabled {
+        pointer-events: none;
+        border: 1px solid red;
+    }
+
     .board__column {
         border: $board-border-size $board-border-style $board-border-color;
         display: flex;

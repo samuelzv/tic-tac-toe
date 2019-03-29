@@ -7,10 +7,9 @@ class GameStartBlocEvent extends BlocEvent {
   GameStartBlocEvent(this.boardSize);
 }
 
-class GameMoveBlocEvent extends BlocEvent {
+class HumanMovementBlocEvent extends BlocEvent {
   final int row;
   final int column;
-  final CellValue value;
 
-  GameMoveBlocEvent(this.row, this.column, this.value);
+  HumanMovementBlocEvent(this.row, this.column);
 }

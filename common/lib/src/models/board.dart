@@ -7,10 +7,10 @@ class Board {
   Board();
 
   void setInitialCells(size) {
-    _cells =_getInitialCells(size);
+    setCells(_getInitialCells(size));
   }
 
-  _getInitialCells(int size) {
+  List<List<Cell>> _getInitialCells(int size) {
     return List<List<Cell>>.generate(size, (int row) => 
       List<Cell>.generate(size, (int column) => Cell(CellValue.empty)));
   }
@@ -19,7 +19,8 @@ class Board {
     _cells[row][column].setValue(value);
   }
 
+  void setCells(List<List<Cell>> cells) => _cells = cells;
+
   List<List<Cell>> getCells() => _cells;
 
-  void setCells(List<List<Cell>> cells) => _cells = cells;
 }

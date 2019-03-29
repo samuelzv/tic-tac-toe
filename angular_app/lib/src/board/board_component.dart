@@ -12,7 +12,7 @@ import 'package:common/common.dart';
     'material_custom.css'
   ],
   templateUrl: 'board_component.html',
-  exports: [CellValue],
+  exports: [CellValue, Player],
   directives: [
     MaterialCheckboxComponent,
     MaterialFabComponent,
@@ -21,6 +21,7 @@ import 'package:common/common.dart';
     materialInputDirectives,
     NgFor,
     NgIf,
+    NgClass,
   ],
   pipes: [BlocPipe]
 )
@@ -34,7 +35,11 @@ class BoardComponent implements OnInit, OnDestroy {
     gameBloc = GameBloc();
 
     gameBloc.state
-      .listen((GameState state) => gameState = state);
+      .listen((GameState state) { 
+        print('The state is');
+        print(state.cells);
+        gameState = state; 
+      });
 
     gameBloc.dispatch(GameStartBlocEvent(3));
   }
@@ -44,7 +49,7 @@ class BoardComponent implements OnInit, OnDestroy {
     gameBloc.dispose();
   }
 
-  void onChoose(int row, int column) {
-    gameBloc.dispatch(GameMoveBlocEvent(row, column, CellValue.cross));
+  void onChooseHuman(int row, int column) {
+    gameBloc.dispatch(HumanMovementBlocEvent(row, column));
   }
 }

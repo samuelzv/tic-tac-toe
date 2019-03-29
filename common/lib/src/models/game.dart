@@ -1,39 +1,37 @@
 import 'board.dart';
 import 'cell.dart';
 import 'cell_value.dart';
+import 'player.dart';
+import 'game_state.dart';
 
-class GameState {
-  final List<List<Cell>> cells;
-
-  GameState({this.cells});
-}
 
 class Game {
   Board _board;
+  GameState _gameState;
 
   Game() {
-    _board =Board();
+    _board = Board();
+    _gameState = GameState(Player.human, []);
   }
 
-  factory Game.fromState(GameState gameState) {
-    Game game = Game();
-    game._board.setCells(gameState.cells);
-
-    return game;
+  setState(GameState newState) {
+    _board.setCells(newState.cells);
+    _gameState = newState;
   }
 
   void start(int size) {
     _board.setInitialCells(size);
   }
 
-  void setCellValue(int row, int column, CellValue value) {
-    _board.setCellValue(row, column, value);
+  void makeHumanMovement(int row, int column) {
+    _board.setCellValue(row, column, CellValue.cross);
+    _gameState.turn = Player.computer;
   }
 
   List<List<Cell>> _getCells() => (_board != null) ?_board.getCells() : null;
 
   GameState get state {
-    return GameState(cells: _getCells());
+    return _gameState
+            ..cells =_getCells();
   }
-
 }

@@ -1,0 +1,1 @@
+enum Player { computer, human }

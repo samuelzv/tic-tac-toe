@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import '../models/game.dart';
 
+import './../models/models.dart';
 import '../bloc_event.dart';
 import './game_bloc_event.dart';
 
@@ -19,9 +19,10 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
         yield game.state;
     }
 
-    if (event is GameMoveBlocEvent) {
-      Game game = Game.fromState(currentState);
-      game.setCellValue(event.row, event.column, event.value);
+    if (event is HumanMovementBlocEvent) {
+      Game game = Game(); 
+      game.setState(currentState);
+      game.makeHumanMovement(event.row, event.column);
 
       yield game.state;
     }
