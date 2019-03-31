@@ -5,6 +5,8 @@ import 'package:angular_components/angular_components.dart';
 import 'package:angular_bloc/angular_bloc.dart';
 import 'package:common/common.dart';
 
+import '../services/game_bloc_service.dart';
+
 @Component(
   selector: 'board',
   styleUrls: [
@@ -26,26 +28,31 @@ import 'package:common/common.dart';
   pipes: [BlocPipe]
 )
 class BoardComponent implements OnInit, OnDestroy {
-  GameBloc gameBloc;
+  final GameBlocService _gameBlocService;
   GameState gameState;
-  BoardComponent();
+
+  BoardComponent(this._gameBlocService);
 
   @override
   void ngOnInit() async {
-    gameBloc = GameBloc();
+    // gameBloc = GameBloc();
 
-    gameBloc.state
-      .listen((GameState state) => gameState = state);
+    _gameBlocService.state
+      .listen((GameState state) { 
+        gameState = state;
+        print('state:');
+        print(state.username);
+        print(state);
+      });
 
-    gameBloc.dispatch(GameStartBlocEvent(3));
+    _gameBlocService.startGame();
   }
 
   @override
   void ngOnDestroy() {
-    gameBloc.dispose();
   }
 
   void onChooseHuman(int row, int column) {
-    gameBloc.dispatch(HumanMovementBlocEvent(row, column));
+    _gameBlocService.makeHumanMovement(row, column);
   }
 }

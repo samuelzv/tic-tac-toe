@@ -12,19 +12,25 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
 
   @override
   Stream<GameState> mapEventToState(BlocEvent event) async* {
-    if (event is GameStartBlocEvent) {
+    if (event is LoginBlocEvent) {
+      Game game = Game();
+      game.username = event.username;
+
+      yield game.state;
+    } else if (event is GameStartBlocEvent) {
         Game game = Game();
+        game.setState(currentState);
         game.start(event.boardSize);
 
         yield game.state;
-    }
-
-    if (event is HumanMovementBlocEvent) {
+    } else if (event is HumanMovementBlocEvent) {
       Game game = Game(); 
       game.setState(currentState);
       game.makeHumanMovement(event.row, event.column);
 
       yield game.state;
+    } else {
+      yield currentState;
     }
   }
 }

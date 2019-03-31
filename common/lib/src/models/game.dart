@@ -11,7 +11,7 @@ class Game {
 
   Game() {
     _board = Board();
-    _gameState = GameState(Player.human, []);
+    _gameState = GameState('', Player.human, []);
   }
 
   setState(GameState newState) {
@@ -21,6 +21,10 @@ class Game {
 
   void start(int size) {
     _board.setInitialCells(size);
+  }
+
+  set username(String value) {
+    _gameState.username = value;
   }
 
   void makeHumanMovement(int row, int column) {

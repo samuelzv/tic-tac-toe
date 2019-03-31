@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
-import 'package:angular_router/angular_router.dart';
 import 'package:angular_bloc/angular_bloc.dart';
+import 'package:angular_components/angular_components.dart';
 import 'package:angular_forms/angular_forms.dart';
+import 'package:angular_router/angular_router.dart';
+
+// import 'package:common/common.dart';
+import '../services/game_bloc_service.dart';
 import '../route_paths.dart';
 
 @Component(
@@ -28,11 +31,12 @@ import '../route_paths.dart';
 )
 class WelcomeComponent implements OnInit, OnDestroy {
   final Router _router;
+  final GameBlocService _gameBlocService;
   final String welcomeMessage = 'Welcome!';
   String userName;
   ControlGroup welcomeForm;
 
-  WelcomeComponent(this._router);
+  WelcomeComponent(this._router, this._gameBlocService);
 
   @override
   void ngOnInit() async {
@@ -46,6 +50,11 @@ class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   void onSubmit() {
-    this._router.navigate(RoutePaths.game.toUrl());
+    final String username = welcomeForm.value['username'];
+
+    this._gameBlocService.login(username);
+    Future.delayed(Duration(seconds: 2), () {
+      this._router.navigate(RoutePaths.game.toUrl());
+    });
   }
 }
