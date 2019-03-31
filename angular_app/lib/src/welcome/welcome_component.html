@@ -1,0 +1,17 @@
+<div class="welcome">
+    <h1>{{welcomeMessage}}</h1>
+    <h2>What is your name?</h2>
+    <form novalidate [ngFormModel]="welcomeForm" (ngSubmit)="onSubmit()" #f="ngForm">
+        <material-input floatingLabel 
+            type = "text" 
+            ngControl = "username" 
+            label = "Your Name"
+            requiredErrorMsg = "Your name is required" >
+        </material-input>
+        <material-button [disabled]="!f.form.valid" raised type="submit" 
+            (trigger)="f.onSubmit($event)">
+            Let's play
+            <material-icon [icon]="'play_circle_outline'"></material-icon>
+        </material-button>
+    </form>
+</div>
