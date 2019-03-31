@@ -12,6 +12,7 @@ import 'src/routes.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   template: '''
+    <h1>{{appName}}</h1>
     <router-outlet [routes]="Routes.all"></router-outlet>
   ''',
   directives: [routerDirectives],
@@ -19,5 +20,5 @@ import 'src/routes.dart';
   exports: [RoutePaths, Routes]
 )
 class AppComponent {
-  String welcomeText = 'Welcome to the Noughts and Crosses game';
+  String appName = 'Noughts and Crosses game';
 }

@@ -1,0 +1,1 @@
+// class MockRouter extends Mock implements Router {}
