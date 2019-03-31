@@ -5,14 +5,14 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_test/angular_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import 'package:angular_app/app_component.dart';
 import 'package:angular_app/app_component.template.dart' as ng;
 import 'app_test.template.dart' as self;
+import 'utils.dart';
 
-class MockRouter extends Mock implements Router {}
+// class MockRouter extends Mock implements Router {}
 
 @GenerateInjector([
   routerProviders,
@@ -21,19 +21,26 @@ class MockRouter extends Mock implements Router {}
 final InjectorFactory rootInjector = self.rootInjector$Injector;
 
 void main() {
-  ng.initReflector();
+  final injector = InjectorProbe(rootInjector);
+  final testBed = NgTestBed.forComponent<AppComponent>(
+    ng.AppComponentNgFactory,
+    rootInjector: injector.factory
+  );
+
   tearDown(disposeAnyRunningTest);
 
-  test('Show app name', () async {
-    final testBed = NgTestBed.forComponent<AppComponent>(
-      ng.AppComponentNgFactory,
-      rootInjector: rootInjector);
+  test('Should show app name', () async {
+    final fixture = await testBed.create();
 
-    final textFixture = await testBed.create();
-
-    expect(textFixture.text.trim(), 'Noughts and Crosses game');
-
-    // await textFixture.update((c) => c.appName = 'Super App');
-    // expect(textFixture.text.trim(), 'Super App');
+    expect(fixture.text.trim(), 'Noughts and Crosses game');
   });
+
+  test('Should change app name', () async {
+    final String appName = 'Super App';
+    final fixture = await testBed.create() ;
+
+    await fixture.update((c) => c.appName = appName);
+    expect(fixture.text.trim(), appName);
+  });
+
 }
