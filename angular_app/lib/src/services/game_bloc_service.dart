@@ -18,6 +18,10 @@ class GameBlocService {
     _gameBloc.dispatch(HumanMovementBlocEvent(row, column));
   }
 
+  void makeComputerMovement() {
+    _gameBloc.dispatch(ComputerMovementBlocEvent());
+  }
+
   void startGame() {
     _gameBloc.dispatch(GameStartBlocEvent());
   }

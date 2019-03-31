@@ -53,7 +53,7 @@ class WelcomeComponent implements OnInit, OnDestroy {
     final String username = welcomeForm.value['username'];
 
     this._gameBlocService.login(username);
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       this._router.navigate(RoutePaths.game.toUrl());
     });
   }

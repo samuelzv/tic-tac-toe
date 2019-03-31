@@ -32,6 +32,14 @@ class Game {
     _gameState.turn = Player.computer;
   }
 
+  void makeComputerMovement() {
+    CellPosition cellPosition = _board.getRandomEmptyCell();
+    if (cellPosition != null) {
+      _board.setCellValue(cellPosition.row, cellPosition.column, CellValue.nought);
+      _gameState.turn = Player.human;
+    }
+  }
+
   List<List<Cell>> _getCells() => (_board != null) ?_board.getCells() : null;
 
   GameState get state {

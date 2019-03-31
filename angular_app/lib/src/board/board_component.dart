@@ -53,6 +53,18 @@ class BoardComponent implements OnInit, OnDestroy {
   }
 
   void onChooseHuman(int row, int column) {
-    _gameBlocService.makeHumanMovement(row, column);
+    if (gameState.cells[row][column].getValue() == CellValue.empty) {
+      _gameBlocService.makeHumanMovement(row, column);
+      Future.delayed(Duration(seconds: 2), () => _gameBlocService.makeComputerMovement());
+    }
+  }
+
+  String getIcon(int row, int column) {
+    CellValue cellValue = gameState.cells[row][column].getValue(); 
+    if (cellValue == CellValue.empty) {
+      return '';
+    } else {
+      return cellValue == CellValue.cross ? 'pets' : 'android';
+    }
   }
 }

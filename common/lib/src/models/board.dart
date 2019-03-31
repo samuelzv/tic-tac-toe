@@ -1,5 +1,7 @@
+import 'dart:math';
 import 'cell.dart';
 import 'cell_value.dart';
+
 
 class Board {
   List<List<Cell>> _cells;
@@ -22,5 +24,22 @@ class Board {
   void setCells(List<List<Cell>> cells) => _cells = cells;
 
   List<List<Cell>> getCells() => _cells;
+
+  CellPosition getRandomEmptyCell() {
+    List<CellPosition> emptyCells = [];
+    final random = Random();
+
+    for(int row = 0; row < _cells.length; row++) {
+      for (int column = 0; column < _cells.length; column++) {
+        if (_cells[row][column].getValue() == CellValue.empty) {
+          emptyCells.add(CellPosition(row, column));
+        }
+      }
+    }
+
+    int randomIndex = random.nextInt(emptyCells.length);
+
+    return (emptyCells.isNotEmpty) ? emptyCells[randomIndex] : null;
+  }
 
 }

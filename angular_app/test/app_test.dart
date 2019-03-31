@@ -12,8 +12,6 @@ import 'package:angular_app/app_component.template.dart' as ng;
 import 'app_test.template.dart' as self;
 import 'utils.dart';
 
-// class MockRouter extends Mock implements Router {}
-
 @GenerateInjector([
   routerProviders,
   ClassProvider(Router, useClass: MockRouter)

@@ -13,3 +13,10 @@ class Cell {
     return _value;
   }
 }
+
+class CellPosition {
+  int row;
+  int column;
+
+  CellPosition(this.row, this.column);
+}

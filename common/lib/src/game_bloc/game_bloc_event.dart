@@ -14,6 +14,10 @@ class HumanMovementBlocEvent extends BlocEvent {
   HumanMovementBlocEvent(this.row, this.column);
 }
 
+class ComputerMovementBlocEvent extends BlocEvent {
+  ComputerMovementBlocEvent();
+}
+
 class LoginBlocEvent extends BlocEvent {
   final String username;
 
