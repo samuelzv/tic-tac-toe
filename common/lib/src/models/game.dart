@@ -11,7 +11,7 @@ class Game {
 
   Game() {
     _board = Board();
-    _gameState = GameState('', Player.human, []);
+    _gameState = GameState('', Player.human, [], false);
   }
 
   setState(GameState newState) {
@@ -28,16 +28,67 @@ class Game {
   }
 
   void makeHumanMovement(int row, int column) {
-    _board.setCellValue(row, column, CellValue.cross);
-    _gameState.turn = Player.computer;
+    if (!_gameState.isGameOver) {
+      _board.setCellValue(row, column, CellValue.cross);
+      if (isGameWon(_board.humanMovements)) {
+        _gameState.isGameOver = true;
+      } else {
+        _gameState.turn = Player.computer;
+      }
+    }
   }
 
   void makeComputerMovement() {
-    CellPosition cellPosition = _board.getRandomEmptyCell();
-    if (cellPosition != null) {
-      _board.setCellValue(cellPosition.row, cellPosition.column, CellValue.nought);
-      _gameState.turn = Player.human;
+    if (!_gameState.isGameOver) {
+      CellPosition cellPosition = _board.getRandomEmptyCell();
+      if (cellPosition != null) {
+        _board.setCellValue(cellPosition.row, cellPosition.column, CellValue.nought);
+        if (isGameWon(_board.computerMovements)) {
+          _gameState.isGameOver = true;
+        } else {
+          _gameState.turn = Player.human;
+        }
+      }
     }
+  }
+
+  bool isGameWon(List<CellPosition> movements) {
+    List<List<CellPosition>> winPositions = [
+      /* horizontal */
+      [CellPosition(0, 0), CellPosition(0, 1), CellPosition(0, 2)],
+      [CellPosition(1, 0), CellPosition(1, 1), CellPosition(1, 2)],
+      [CellPosition(2, 0), CellPosition(2, 1), CellPosition(2, 2)],
+      /* vertical */
+      [CellPosition(0, 0), CellPosition(1, 0), CellPosition(2, 0)], 
+      [CellPosition(0, 1), CellPosition(1, 1), CellPosition(2, 1)],
+      [CellPosition(0, 2), CellPosition(1, 2), CellPosition(2, 2)],
+      /* diagonal */
+      [CellPosition(0, 0), CellPosition(1, 1), CellPosition(2, 2)], 
+      [CellPosition(0, 2), CellPosition(1, 1), CellPosition(2, 0)], 
+    ];
+
+    int index = 0;
+    bool isGameOver = false;
+
+    while (!isGameOver && index < winPositions.length) {
+      index = index + 1;
+
+      isGameOver = winPositions[index].every((CellPosition position) {
+        bool contains = false;
+
+        for (int i = 0; i < movements.length; i++) {
+          if (position.column == movements[i].column && position.row == movements[i].row) {
+            contains = true;
+            break;
+          }
+        }
+
+        return contains;
+      });
+
+    }
+
+    return isGameOver;
   }
 
   List<List<Cell>> _getCells() => (_board != null) ?_board.getCells() : null;

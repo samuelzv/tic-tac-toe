@@ -2,6 +2,10 @@ $board-border-color: black;
 $board-border-size: 3px;
 $board-border-style: solid;
 
+:host {
+    width: 80%;
+}
+
 .board {
     padding: 20px;
 }
