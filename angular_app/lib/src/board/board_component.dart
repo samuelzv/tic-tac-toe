@@ -28,6 +28,10 @@ import '../services/game_bloc_service.dart';
   pipes: [BlocPipe]
 )
 class BoardComponent implements OnInit, OnDestroy {
+  final _chooseCell = new StreamController<CellPosition>();
+  @Output() 
+  get chooseCell => _chooseCell.stream;
+
   final GameBlocService _gameBlocService;
   GameState gameState;
 
@@ -35,14 +39,10 @@ class BoardComponent implements OnInit, OnDestroy {
 
   @override
   void ngOnInit() async {
-    // gameBloc = GameBloc();
 
     _gameBlocService.state
       .listen((GameState state) { 
         gameState = state;
-        print('state:');
-        print(state.username);
-        print(state);
       });
 
     _gameBlocService.startGame();
@@ -53,10 +53,7 @@ class BoardComponent implements OnInit, OnDestroy {
   }
 
   void onChooseHuman(int row, int column) {
-    if (gameState.cells[row][column].getValue() == CellValue.empty) {
-      _gameBlocService.makeHumanMovement(row, column);
-      Future.delayed(Duration(seconds: 2), () => _gameBlocService.makeComputerMovement());
-    }
+    _chooseCell.add(CellPosition(row, column));
   }
 
   String getIcon(int row, int column) {
