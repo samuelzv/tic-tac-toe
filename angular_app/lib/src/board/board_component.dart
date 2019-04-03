@@ -14,7 +14,7 @@ import '../services/game_bloc_service.dart';
     'material_custom.css'
   ],
   templateUrl: 'board_component.html',
-  exports: [CellValue, Player],
+  exports: [Player],
   directives: [
     MaterialCheckboxComponent,
     MaterialFabComponent,
@@ -41,9 +41,7 @@ class BoardComponent implements OnInit, OnDestroy {
   void ngOnInit() async {
 
     _gameBlocService.state
-      .listen((GameState state) { 
-        gameState = state;
-      });
+      .listen((GameState state)  => gameState = state);
 
     _gameBlocService.startGame();
   }
@@ -54,14 +52,5 @@ class BoardComponent implements OnInit, OnDestroy {
 
   void onChooseHuman(int row, int column) {
     _chooseCell.add(CellPosition(row, column));
-  }
-
-  String getIcon(int row, int column) {
-    CellValue cellValue = gameState.cells[row][column].getValue(); 
-    if (cellValue == CellValue.empty) {
-      return '';
-    } else {
-      return cellValue == CellValue.cross ? 'pets' : 'android';
-    }
   }
 }

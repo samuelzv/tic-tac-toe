@@ -36,8 +36,8 @@ class GameComponent implements OnInit, OnDestroy {
   }
 
   void onChooseCell(CellPosition cellPosition) {
-    if (gameState.cells[cellPosition.row][cellPosition.column].getValue() == CellValue.empty) {
-      _gameBlocService.makeHumanMovement(cellPosition.row, cellPosition.column);
+    if (gameState.cells[cellPosition.row][cellPosition.column].value == null) {
+      _gameBlocService.makeHumanMovement(cellPosition);
       Future.delayed(Duration(seconds: 2), () => _gameBlocService.makeComputerMovement());
     }
   }

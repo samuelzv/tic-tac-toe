@@ -1,5 +1,5 @@
 import '../bloc_event.dart';
-import '../models/cell_value.dart';
+import '../models/cell.dart';
 
 class GameStartBlocEvent extends BlocEvent {
   final int boardSize = 3;
@@ -8,10 +8,9 @@ class GameStartBlocEvent extends BlocEvent {
 }
 
 class HumanMovementBlocEvent extends BlocEvent {
-  final int row;
-  final int column;
+  final CellPosition cellPosition;
 
-  HumanMovementBlocEvent(this.row, this.column);
+  HumanMovementBlocEvent(this.cellPosition);
 }
 
 class ComputerMovementBlocEvent extends BlocEvent {

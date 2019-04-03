@@ -1,15 +1,19 @@
-import './cell_value.dart';
+import './player.dart';
 
 class Cell {
-  CellValue _value;
+  String _icon = '';
+  Player _value;
 
-  Cell(this._value);
-
-  void setValue(CellValue newValue) {
-    _value = newValue;
+  void choose(Player player) {
+    _value = player;
+    _icon = (player == Player.human ? 'pets' : 'android');
   }
 
-  CellValue getValue() {
+  String get icon {
+    return _icon;
+  }
+
+  Player get value {
     return _value;
   }
 }

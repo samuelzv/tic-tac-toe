@@ -1,15 +1,27 @@
 import 'board.dart';
 import 'cell.dart';
-import 'cell_value.dart';
 import 'player.dart';
 import 'game_state.dart';
-
 
 class Game {
   Board _board;
   GameState _gameState;
+  List<List<CellPosition>> _winningCombinations = [];
 
   Game() {
+    _winningCombinations = [
+      /* horizontal */
+      [CellPosition(0, 0), CellPosition(0, 1), CellPosition(0, 2)],
+      [CellPosition(1, 0), CellPosition(1, 1), CellPosition(1, 2)],
+      [CellPosition(2, 0), CellPosition(2, 1), CellPosition(2, 2)],
+      /* vertical */
+      [CellPosition(0, 0), CellPosition(1, 0), CellPosition(2, 0)], 
+      [CellPosition(0, 1), CellPosition(1, 1), CellPosition(2, 1)],
+      [CellPosition(0, 2), CellPosition(1, 2), CellPosition(2, 2)],
+      /* diagonal */
+      [CellPosition(0, 0), CellPosition(1, 1), CellPosition(2, 2)], 
+      [CellPosition(0, 2), CellPosition(1, 1), CellPosition(2, 0)], 
+    ];
     _board = Board();
     _gameState = GameState('', Player.human, [], false);
   }
@@ -27,53 +39,41 @@ class Game {
     _gameState.username = value;
   }
 
-  void makeHumanMovement(int row, int column) {
+  void makeMovement(Player player, [CellPosition cellPosition]) {
     if (!_gameState.isGameOver) {
-      _board.setCellValue(row, column, CellValue.cross);
-      if (isGameWon(_board.humanMovements)) {
+      List<CellPosition> movements = [];
+      if (player == Player.human) {
+        _makeHumanMovement(cellPosition);
+        movements = _board.humanMovements;
+      } else {
+        _makeComputerMovement();
+        movements = _board.computerMovements;
+      }
+      if (_isWinningCombination(movements)) {
         _gameState.isGameOver = true;
       } else {
-        _gameState.turn = Player.computer;
+        _gameState.turn = (player == Player.human ? Player.computer : Player.human);
       }
     }
   }
 
-  void makeComputerMovement() {
-    if (!_gameState.isGameOver) {
+  void _makeHumanMovement(CellPosition cellPosition) {
+      _board.chooseCell(cellPosition, Player.human);
+  }
+
+  void _makeComputerMovement() {
       CellPosition cellPosition = _board.getRandomEmptyCell();
       if (cellPosition != null) {
-        _board.setCellValue(cellPosition.row, cellPosition.column, CellValue.nought);
-        if (isGameWon(_board.computerMovements)) {
-          _gameState.isGameOver = true;
-        } else {
-          _gameState.turn = Player.human;
-        }
+        _board.chooseCell(cellPosition, Player.computer);
       }
-    }
   }
 
-  bool isGameWon(List<CellPosition> movements) {
-    List<List<CellPosition>> winPositions = [
-      /* horizontal */
-      [CellPosition(0, 0), CellPosition(0, 1), CellPosition(0, 2)],
-      [CellPosition(1, 0), CellPosition(1, 1), CellPosition(1, 2)],
-      [CellPosition(2, 0), CellPosition(2, 1), CellPosition(2, 2)],
-      /* vertical */
-      [CellPosition(0, 0), CellPosition(1, 0), CellPosition(2, 0)], 
-      [CellPosition(0, 1), CellPosition(1, 1), CellPosition(2, 1)],
-      [CellPosition(0, 2), CellPosition(1, 2), CellPosition(2, 2)],
-      /* diagonal */
-      [CellPosition(0, 0), CellPosition(1, 1), CellPosition(2, 2)], 
-      [CellPosition(0, 2), CellPosition(1, 1), CellPosition(2, 0)], 
-    ];
-
+  bool _isWinningCombination(List<CellPosition> movements) {
     int index = 0;
     bool isGameOver = false;
 
-    while (!isGameOver && index < winPositions.length) {
-      index = index + 1;
-
-      isGameOver = winPositions[index].every((CellPosition position) {
+    while (!isGameOver && index < _winningCombinations.length) {
+      isGameOver = _winningCombinations[index].every((CellPosition position) {
         bool contains = false;
 
         for (int i = 0; i < movements.length; i++) {
@@ -82,10 +82,10 @@ class Game {
             break;
           }
         }
-
         return contains;
       });
 
+      index = index + 1;
     }
 
     return isGameOver;

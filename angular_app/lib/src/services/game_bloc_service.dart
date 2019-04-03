@@ -14,8 +14,8 @@ class GameBlocService {
     _gameBloc.dispatch(LoginBlocEvent(username));
   }
 
-  void makeHumanMovement(int row, int column) {
-    _gameBloc.dispatch(HumanMovementBlocEvent(row, column));
+  void makeHumanMovement(CellPosition cellPosition) {
+    _gameBloc.dispatch(HumanMovementBlocEvent(cellPosition));
   }
 
   void makeComputerMovement() {
