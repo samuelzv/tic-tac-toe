@@ -1,7 +1,5 @@
 @TestOn('browser')
 
-import 'dart:async';
-
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_test/angular_test.dart';

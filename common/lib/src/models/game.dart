@@ -31,8 +31,8 @@ class Game {
     _gameState = newState;
   }
 
-  void start(int size) {
-    _board.setInitialCells(size);
+  void start() {
+    _board.setInitialCells();
   }
 
   set username(String value) {
@@ -46,7 +46,7 @@ class Game {
         _makeHumanMovement(cellPosition);
         movements = _board.humanMovements;
       } else {
-        _makeComputerMovement();
+        _makeComputerMovement(cellPosition);
         movements = _board.computerMovements;
       }
       if (_isWinningCombination(movements)) {
@@ -61,10 +61,11 @@ class Game {
       _board.chooseCell(cellPosition, Player.human);
   }
 
-  void _makeComputerMovement() {
-      CellPosition cellPosition = _board.getRandomEmptyCell();
-      if (cellPosition != null) {
-        _board.chooseCell(cellPosition, Player.computer);
+  void _makeComputerMovement([CellPosition cellPosition]) {
+      CellPosition targetPosition = cellPosition ?? _board.getRandomEmptyCell();
+
+      if (targetPosition != null) {
+        _board.chooseCell(targetPosition, Player.computer);
       }
   }
 

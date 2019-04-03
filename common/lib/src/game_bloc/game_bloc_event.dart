@@ -2,8 +2,6 @@ import '../bloc_event.dart';
 import '../models/cell.dart';
 
 class GameStartBlocEvent extends BlocEvent {
-  final int boardSize = 3;
-
   GameStartBlocEvent();
 }
 

@@ -20,7 +20,7 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
       yield game.state;
     } else if (event is GameStartBlocEvent) {
         game.setState(currentState);
-        game.start(event.boardSize);
+        game.start();
 
         yield game.state;
     } else if (event is HumanMovementBlocEvent) {

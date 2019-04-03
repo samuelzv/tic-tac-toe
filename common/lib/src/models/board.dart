@@ -3,10 +3,11 @@ import 'cell.dart';
 import 'player.dart';
 
 class Board {
+  final int _boardSize = 3;
   List<List<Cell>> _cells;
 
-  void setInitialCells(size) {
-    setCells(_getInitialCells(size));
+  void setInitialCells() {
+    setCells(_getInitialCells(_boardSize));
   }
 
   List<List<Cell>> _getInitialCells(int size) {
