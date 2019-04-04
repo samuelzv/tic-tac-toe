@@ -1,25 +1,14 @@
-<div *ngIf="gameState != null">
-  <div class="board" *ngIf="gameState.cells != null" [ngClass]="{'board--disabled': gameState.turn == Player.computer || gameState.isGameOver}">
-    <template ngFor let-row [ngForOf]="gameState.cells" let-rowIndex="index">
-      <div class="board__row">
-        <template ngFor let-column [ngForOf]="row" let-columnIndex="index" class="board__column">
-          <div class="board__column">
-            <material-fab mini raised class="" (trigger)="onChooseHuman(rowIndex, columnIndex)">
-                <material-icon [icon]="gameState.cells[rowIndex][columnIndex].icon">
-                </material-icon>
-            </material-fab>
-          </div>
-        </template>
-      </div>
-    </template>
-  </div>
-
-  <div *ngIf="!gameState.isGameOver && gameState.turn == Player.computer" class="computer">
-    <div>Thinking</div>
-  </div>
-
-  <div *ngIf="gameState.isGameOver">
-    Game is over
-  </div>
-
+<div class="board" *ngIf="gameState.cells != null" [ngClass]="{'board--disabled': gameState.turn == Player.computer || gameState.isGameOver}">
+  <template ngFor let-row [ngForOf]="gameState.cells" let-rowIndex="index">
+    <div class="board__row">
+      <template ngFor let-column [ngForOf]="row" let-columnIndex="index" class="board__column">
+        <div class="board__column">
+          <material-fab mini raised class="" (trigger)="onChooseHuman(rowIndex, columnIndex)">
+              <material-icon [icon]="gameState.cells[rowIndex][columnIndex].icon">
+              </material-icon>
+          </material-fab>
+        </div>
+      </template>
+    </div>
+  </template>
 </div>

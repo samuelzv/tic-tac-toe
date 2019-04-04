@@ -22,7 +22,6 @@ import '../route_paths.dart';
     MaterialFabComponent,
     MaterialButtonComponent,
     MaterialIconComponent,
-    materialInputDirectives,
     NgFor,
     NgIf,
     NgClass,

@@ -21,8 +21,8 @@ class GameBlocService {
     _gameBloc.dispatch(ComputerMovementBlocEvent());
   }
 
-  void startGame() {
-    _gameBloc.dispatch(GameStartBlocEvent());
+  void newGame() {
+    _gameBloc.dispatch(NewGameBlocEvent());
   }
 
   Stream<GameState> get state {

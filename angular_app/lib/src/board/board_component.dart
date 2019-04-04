@@ -5,8 +5,6 @@ import 'package:angular_components/angular_components.dart';
 import 'package:angular_bloc/angular_bloc.dart';
 import 'package:common/common.dart';
 
-import '../services/game_bloc_service.dart';
-
 @Component(
   selector: 'board',
   styleUrls: [
@@ -32,18 +30,12 @@ class BoardComponent implements OnInit, OnDestroy {
   @Output() 
   get chooseCell => _chooseCell.stream;
 
-  final GameBlocService _gameBlocService;
-  GameState gameState;
+  @Input() GameState gameState;
 
-  BoardComponent(this._gameBlocService);
+  BoardComponent();
 
   @override
   void ngOnInit() async {
-
-    _gameBlocService.state
-      .listen((GameState state)  => gameState = state);
-
-    _gameBlocService.startGame();
   }
 
   @override

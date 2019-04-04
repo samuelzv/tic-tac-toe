@@ -18,7 +18,7 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
       game.username = event.username;
 
       yield game.state;
-    } else if (event is GameStartBlocEvent) {
+    } else if (event is NewGameBlocEvent) {
         game.setState(currentState);
         game.start();
 

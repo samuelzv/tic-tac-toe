@@ -1,8 +1,8 @@
 import '../bloc_event.dart';
 import '../models/cell.dart';
 
-class GameStartBlocEvent extends BlocEvent {
-  GameStartBlocEvent();
+class NewGameBlocEvent extends BlocEvent {
+  NewGameBlocEvent();
 }
 
 class HumanMovementBlocEvent extends BlocEvent {

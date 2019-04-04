@@ -1,7 +1,8 @@
 import 'dart:async';
-
 import 'package:angular/angular.dart';
+
 import 'package:angular_app/src/board/board_component.dart';
+import 'package:angular_app/src/play_controls/play_controls_component.dart';
 import 'package:common/common.dart';
 
 import '../services/game_bloc_service.dart';
@@ -12,7 +13,11 @@ import '../services/game_bloc_service.dart';
     'game_component.css'
   ],
   templateUrl: 'game_component.html',
-  directives: [BoardComponent],
+  directives: [
+    BoardComponent,
+    PlayControlsComponent,
+    NgIf,
+  ],
   pipes: []
 )
 class GameComponent implements OnInit, OnDestroy {
@@ -28,7 +33,7 @@ class GameComponent implements OnInit, OnDestroy {
         gameState = state;
       });
 
-    _gameBlocService.startGame();
+    _gameBlocService.newGame();
   }
 
   @override
@@ -38,8 +43,11 @@ class GameComponent implements OnInit, OnDestroy {
   void onChooseCell(CellPosition cellPosition) {
     if (gameState.cells[cellPosition.row][cellPosition.column].value == null) {
       _gameBlocService.makeHumanMovement(cellPosition);
-      Future.delayed(Duration(seconds: 2), () => _gameBlocService.makeComputerMovement());
+      Future.delayed(Duration(seconds: 1), () => _gameBlocService.makeComputerMovement());
     }
   }
 
+  void onNewGame() {
+    _gameBlocService.newGame();
+  }
 }

@@ -33,6 +33,9 @@ class Game {
 
   void start() {
     _board.setInitialCells();
+    _gameState.isGameOver = false;
+    _gameState.turn = Player.human;
+    _gameState.isPristine = true;
   }
 
   set username(String value) {
@@ -41,6 +44,7 @@ class Game {
 
   void makeMovement(Player player, [CellPosition cellPosition]) {
     if (!_gameState.isGameOver) {
+      _gameState.isPristine = false;
       List<CellPosition> movements = [];
       if (player == Player.human) {
         _makeHumanMovement(cellPosition);
