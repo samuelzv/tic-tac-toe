@@ -1,0 +1,7 @@
+<div *ngIf="gameState.isGameOver">
+    Game is over
+</div>
+
+<div *ngIf="!gameState.isGameOver">
+    {{gameState.turn == Player.human ? 'Your turn' : 'Thinking...'}}
+</div>

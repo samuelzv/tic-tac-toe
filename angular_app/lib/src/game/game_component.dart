@@ -3,6 +3,7 @@ import 'package:angular/angular.dart';
 
 import 'package:angular_app/src/board/board_component.dart';
 import 'package:angular_app/src/play_controls/play_controls_component.dart';
+import 'package:angular_app/src/game_status/game_status_component.dart';
 import 'package:common/common.dart';
 
 import '../services/game_bloc_service.dart';
@@ -13,10 +14,14 @@ import '../services/game_bloc_service.dart';
     'game_component.css'
   ],
   templateUrl: 'game_component.html',
+  exports: [
+    Player
+  ],
   directives: [
-    BoardComponent,
-    PlayControlsComponent,
     NgIf,
+    BoardComponent,
+    GameStatusComponent,
+    PlayControlsComponent,
   ],
   pipes: []
 )
