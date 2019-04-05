@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:angular/angular.dart';
 
-import 'package:angular_app/src/board/board_component.dart';
-import 'package:angular_app/src/play_controls/play_controls_component.dart';
-import 'package:angular_app/src/game_status/game_status_component.dart';
+import 'package:angular_app/src/game/components/components.dart';
 import 'package:common/common.dart';
 
 import '../services/game_bloc_service.dart';
@@ -19,9 +17,9 @@ import '../services/game_bloc_service.dart';
   ],
   directives: [
     NgIf,
-    BoardComponent,
+    GameBoardComponent,
     GameStatusComponent,
-    PlayControlsComponent,
+    GameControlsComponent,
   ],
   pipes: []
 )
@@ -43,6 +41,7 @@ class GameComponent implements OnInit, OnDestroy {
 
   @override
   void ngOnDestroy() {
+    print('On Destroy');
   }
 
   void onChooseCell(CellPosition cellPosition) {

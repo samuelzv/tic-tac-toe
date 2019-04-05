@@ -6,12 +6,12 @@ import 'package:angular_bloc/angular_bloc.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'board',
+  selector: 'game-board',
   styleUrls: [
-    'board_component.css',
+    'game_board_component.css',
     'material_custom.css'
   ],
-  templateUrl: 'board_component.html',
+  templateUrl: 'game_board_component.html',
   exports: [Player],
   directives: [
     MaterialCheckboxComponent,
@@ -25,22 +25,11 @@ import 'package:common/common.dart';
   ],
   pipes: [BlocPipe]
 )
-class BoardComponent implements OnInit, OnDestroy {
+class GameBoardComponent {
+  @Input() GameState gameState;
   final _chooseCell = new StreamController<CellPosition>();
   @Output() 
   get chooseCell => _chooseCell.stream;
-
-  @Input() GameState gameState;
-
-  BoardComponent();
-
-  @override
-  void ngOnInit() async {
-  }
-
-  @override
-  void ngOnDestroy() {
-  }
 
   void onChooseHuman(int row, int column) {
     _chooseCell.add(CellPosition(row, column));

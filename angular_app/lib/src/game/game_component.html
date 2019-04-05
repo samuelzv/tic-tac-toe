@@ -1,5 +1,5 @@
 <div *ngIf="gameState != null" class="game"> 
     <game-status [gameState]="gameState"></game-status>
-    <board [gameState]="gameState" (chooseCell)="onChooseCell($event)"></board>
-    <play-controls [gameState]="gameState" (newGame)="onNewGame()"></play-controls>
+    <game-board [gameState]="gameState" (chooseCell)="onChooseCell($event)"></game-board>
+    <game-controls [gameState]="gameState" (newGame)="onNewGame()"></game-controls>
 </div>
