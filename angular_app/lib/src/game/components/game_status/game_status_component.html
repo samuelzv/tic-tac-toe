@@ -1,5 +1,11 @@
 <div *ngIf="gameState.isGameOver">
-    Game is over
+    <div *ngIf="gameState.isGameTied">
+        Game tied
+    </div>
+
+    <div *ngIf="!gameState.isGameTied">
+        Game is over {{gameState.turn == Player.human ? 'You win': 'Computer wins'}} 
+    </div>
 </div>
 
 <div *ngIf="!gameState.isGameOver">

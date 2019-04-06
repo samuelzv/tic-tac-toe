@@ -33,8 +33,10 @@ class Game {
 
   void start() {
     _board.setInitialCells();
+    // todo remove it
     _gameState.isGameOver = false;
     _gameState.turn = Player.human;
+    _gameState.isGameTied = false;
     _gameState.isPristine = true;
   }
 
@@ -42,23 +44,46 @@ class Game {
     _gameState.username = value;
   }
 
-  void makeMovement(Player player, [CellPosition cellPosition]) {
-    if (!_gameState.isGameOver) {
-      _gameState.isPristine = false;
-      List<CellPosition> movements = [];
-      if (player == Player.human) {
-        _makeHumanMovement(cellPosition);
-        movements = _board.humanMovements;
-      } else {
-        _makeComputerMovement(cellPosition);
-        movements = _board.computerMovements;
-      }
-      if (_isWinningCombination(movements)) {
-        _gameState.isGameOver = true;
-      } else {
-        _gameState.turn = (player == Player.human ? Player.computer : Player.human);
-      }
+  void makeMovement([CellPosition cellPosition]) {
+    if (_gameState.isGameOver) {
+      return;
     }
+
+    _gameState.isPristine = false;
+    if (_gameState.turn == Player.human) {
+      if (_board.isCellAvailable(cellPosition)) {
+      _makeHumanMovement(cellPosition);
+      }
+    } else {
+      _makeComputerMovement(cellPosition);
+    }
+    if (!_determineWinner()) {
+      _shiftTurn();
+    }
+  }
+  bool _determineWinner() {
+      if (_isWinningCombination(_getMovementsFromCurrentPlayer())) {
+        _gameState.isGameOver = true;
+        return true;
+      } else {
+        // if there is no more cells to choose
+        if (_isGameTied()) {
+          _gameState.isGameOver = true;
+          _gameState.isGameTied = true;
+          return true;
+        } 
+      }
+      return false;
+  }
+
+  List<CellPosition> _getMovementsFromCurrentPlayer() {
+      return _gameState.turn == Player.human ? _board.humanMovements : _board.computerMovements;
+  }
+
+  bool _isGameTied() => _board.isBoardFull();
+
+  void _shiftTurn() {
+    _gameState.turn = (_gameState.turn == Player.human ? Player.computer : Player.human);
   }
 
   void _makeHumanMovement(CellPosition cellPosition) {

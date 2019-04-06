@@ -43,11 +43,31 @@ class Board {
     return cellsFromType; 
   }
 
+  bool isBoardFull() {
+    return _getPositionsFromType(null).isEmpty;
+  }
+
   List<CellPosition> get humanMovements {
      return _getPositionsFromType(Player.human);
   }
 
   List<CellPosition> get computerMovements {
      return _getPositionsFromType(Player.computer);
+  }
+
+  bool isCellAvailable(CellPosition cellPosition) {
+    return _cells[cellPosition.row][cellPosition.column].value == null;
+  }
+
+  String toString() {
+    String value =  "";
+
+    for(int row = 0; row < _cells.length; row++) {
+      for (int column = 0; column < _cells.length; column++) {
+        value += 'row: ${row}, column:$column, value: ${_cells[row][column].value}\n';
+      }
+    }
+
+    return value;
   }
 }

@@ -25,12 +25,13 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
         yield game.state;
     } else if (event is HumanMovementBlocEvent) {
       game.setState(currentState);
-      game.makeMovement(Player.human, event.cellPosition);
+      game.makeMovement(event.cellPosition);
+
 
       yield game.state;
     } else if (event is ComputerMovementBlocEvent) {
       game.setState(currentState);
-      game.makeMovement(Player.computer);
+      game.makeMovement();
 
       yield game.state;
     } else {

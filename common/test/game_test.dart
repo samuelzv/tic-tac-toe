@@ -11,14 +11,14 @@ void main() {
     expect(game.state.turn, Player.human);
   });
 
-  test('Doing a human movement, next turn shoul be for computer, next time should be for human', () {
+  test('Doing a human movement, next turn should be for computer, next time should be for human', () {
     Game game = Game();
     game.start();
 
-    game.makeMovement(Player.human, CellPosition(0, 0));
+    game.makeMovement(CellPosition(0, 0));
     expect(game.state.turn, Player.computer);
 
-    game.makeMovement(Player.computer);
+    game.makeMovement();
     expect(game.state.turn, Player.human);
   });
 
@@ -42,7 +42,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(0, 0));
+      game.makeMovement(CellPosition(0, 0));
 
       expect(game.state.isGameOver, true);
     });
@@ -54,7 +54,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(2, 1));
+      game.makeMovement(CellPosition(2, 1));
 
       expect(game.state.isGameOver, true);
     });
@@ -66,7 +66,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(2, 2));
+      game.makeMovement(CellPosition(2, 2));
 
       expect(game.state.isGameOver, true);
     });
@@ -78,7 +78,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(1, 0));
+      game.makeMovement(CellPosition(1, 0));
 
       expect(game.state.isGameOver, true);
     });
@@ -90,7 +90,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(2, 2));
+      game.makeMovement(CellPosition(2, 2));
 
       expect(game.state.isGameOver, true);
     });
@@ -102,7 +102,7 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(2, 0));
+      game.makeMovement(CellPosition(2, 0));
 
       expect(game.state.isGameOver, true);
     });
@@ -114,11 +114,12 @@ void main() {
 
       GameState gameState = GameState('', player, cells, false);
       game.setState(gameState);
-      game.makeMovement(player, CellPosition(2, 0));
+      game.makeMovement(CellPosition(2, 0));
 
       expect(game.state.isGameOver, true);
       // winning should not move the turn to the next
       expect(game.state.turn, player);
     });
+
   });
 }

@@ -23,7 +23,7 @@ import '../services/game_bloc_service.dart';
   ],
   pipes: []
 )
-class GameComponent implements OnInit, OnDestroy {
+class GameComponent implements OnInit {
   final GameBlocService _gameBlocService;
   GameState gameState;
 
@@ -39,16 +39,9 @@ class GameComponent implements OnInit, OnDestroy {
     _gameBlocService.newGame();
   }
 
-  @override
-  void ngOnDestroy() {
-    print('On Destroy');
-  }
-
   void onChooseCell(CellPosition cellPosition) {
-    if (gameState.cells[cellPosition.row][cellPosition.column].value == null) {
-      _gameBlocService.makeHumanMovement(cellPosition);
-      Future.delayed(Duration(seconds: 1), () => _gameBlocService.makeComputerMovement());
-    }
+    _gameBlocService.makeHumanMovement(cellPosition);
+    Future.delayed(Duration(seconds: 1), () => _gameBlocService.makeComputerMovement());
   }
 
   void onNewGame() {
