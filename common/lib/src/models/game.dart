@@ -40,7 +40,6 @@ class Game {
       return;
     }
 
-    _gameState.isPristine = false;
     if (_gameState.turn == Player.human) {
       if (_board.isCellAvailable(cellPosition)) {
       _makeHumanMovement(cellPosition);
@@ -48,23 +47,24 @@ class Game {
     } else {
       _makeComputerMovement(cellPosition);
     }
-    if (!_determineWinner()) {
+
+    _gameState.phase = _determineGamePhase();
+    if (!_gameState.isGameOver) {
       _shiftTurn();
     }
   }
-  bool _determineWinner() {
+
+  GamePhase _determineGamePhase() {
       if (_isWinningCombination(_getMovementsFromCurrentPlayer())) {
-        _gameState.isGameOver = true;
-        return true;
+        return GamePhase.Finished;
       } else {
         // if there is no more cells to choose
         if (_isGameTied()) {
-          _gameState.isGameOver = true;
-          _gameState.isGameTied = true;
-          return true;
-        } 
+          return GamePhase.Tied;
+        } else {
+          return GamePhase.Started;
+        }
       }
-      return false;
   }
 
   List<CellPosition> _getMovementsFromCurrentPlayer() {

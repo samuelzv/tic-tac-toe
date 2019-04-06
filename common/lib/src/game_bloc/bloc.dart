@@ -22,9 +22,6 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
         // keep score
         game.username = currentState.username;
 
-        // game.setState(currentState);
-        // game.start();
-
         yield game.state;
     } else if (event is GameMovementBlocEvent) {
       game.setState(currentState);

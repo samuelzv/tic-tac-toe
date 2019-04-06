@@ -7,7 +7,8 @@ import 'package:common/common.dart';
     'game_status_component.css'
   ],
   exports: [
-    Player
+    Player,
+    GamePhase
   ],
   templateUrl: 'game_status_component.html',
   directives: [
