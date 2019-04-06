@@ -13,7 +13,6 @@ void main() {
 
   test('Doing a human movement, next turn should be for computer, next time should be for human', () {
     Game game = Game();
-    game.start();
 
     game.makeMovement(CellPosition(0, 0));
     expect(game.state.turn, Player.computer);
@@ -25,6 +24,7 @@ void main() {
   group('Winner combinations', () {
     List<List<Cell>> cells;
     Game game;
+    GameState gameState;
 
     setUp(() {
       game = Game();
@@ -33,6 +33,7 @@ void main() {
         [Cell(), Cell(), Cell()],
         [Cell(), Cell(), Cell()],
       ];
+      gameState = GameState(cells: cells);
     });
 
     test('Human should win on horizontal row 0 combination', () {
@@ -40,7 +41,7 @@ void main() {
       cells[0][1].choose(player);
       cells[0][2].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(0, 0));
 
@@ -52,7 +53,7 @@ void main() {
       cells[0][1].choose(player);
       cells[1][1].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(2, 1));
 
@@ -64,7 +65,7 @@ void main() {
       cells[0][0].choose(player);
       cells[1][1].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(2, 2));
 
@@ -76,7 +77,7 @@ void main() {
       cells[1][1].choose(player);
       cells[1][2].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(1, 0));
 
@@ -88,7 +89,7 @@ void main() {
       cells[0][2].choose(player);
       cells[1][2].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(2, 2));
 
@@ -100,7 +101,7 @@ void main() {
       cells[0][2].choose(player);
       cells[1][1].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(2, 0));
 
@@ -112,7 +113,7 @@ void main() {
       cells[0][0].choose(player);
       cells[1][0].choose(player);
 
-      GameState gameState = GameState('', player, cells, false);
+      gameState.turn = player;
       game.setState(gameState);
       game.makeMovement(CellPosition(2, 0));
 

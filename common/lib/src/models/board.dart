@@ -6,16 +6,17 @@ class Board {
   final int _boardSize = 3;
   List<List<Cell>> _cells;
 
-  void setInitialCells() {
-    setCells(_getInitialCells(_boardSize));
+  Board() {
+    _setInitialCells();
   }
 
-  List<List<Cell>> _getInitialCells(int size) {
-    return List<List<Cell>>.generate(size, (int row) => 
-      List<Cell>.generate(size, (int column) => Cell()));
+  void _setInitialCells() {
+    // setCells(_getInitialCells(_boardSize));
+    _cells = List<List<Cell>>.generate(_boardSize, (int row) => 
+      List<Cell>.generate(_boardSize, (int column) => Cell()));
   }
 
-  void chooseCell(CellPosition cellPosition, Player player) {
+  void setCell(CellPosition cellPosition, Player player) {
     _cells[cellPosition.row][cellPosition.column].choose(player);
   }
 

@@ -23,21 +23,12 @@ class Game {
       [CellPosition(0, 2), CellPosition(1, 1), CellPosition(2, 0)], 
     ];
     _board = Board();
-    _gameState = GameState('', Player.human, [], false);
+    _gameState = GameState(cells: _board.getCells());
   }
 
   setState(GameState newState) {
     _board.setCells(newState.cells);
     _gameState = newState;
-  }
-
-  void start() {
-    _board.setInitialCells();
-    // todo remove it
-    _gameState.isGameOver = false;
-    _gameState.turn = Player.human;
-    _gameState.isGameTied = false;
-    _gameState.isPristine = true;
   }
 
   set username(String value) {
@@ -87,14 +78,14 @@ class Game {
   }
 
   void _makeHumanMovement(CellPosition cellPosition) {
-      _board.chooseCell(cellPosition, Player.human);
+      _board.setCell(cellPosition, Player.human);
   }
 
   void _makeComputerMovement([CellPosition cellPosition]) {
       CellPosition targetPosition = cellPosition ?? _board.getRandomEmptyCell();
 
       if (targetPosition != null) {
-        _board.chooseCell(targetPosition, Player.computer);
+        _board.setCell(targetPosition, Player.computer);
       }
   }
 
