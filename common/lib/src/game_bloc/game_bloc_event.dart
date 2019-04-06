@@ -5,14 +5,10 @@ class NewGameBlocEvent extends BlocEvent {
   NewGameBlocEvent();
 }
 
-class HumanMovementBlocEvent extends BlocEvent {
+class GameMovementBlocEvent extends BlocEvent {
   final CellPosition cellPosition;
 
-  HumanMovementBlocEvent(this.cellPosition);
-}
-
-class ComputerMovementBlocEvent extends BlocEvent {
-  ComputerMovementBlocEvent();
+  GameMovementBlocEvent(this.cellPosition);
 }
 
 class LoginBlocEvent extends BlocEvent {

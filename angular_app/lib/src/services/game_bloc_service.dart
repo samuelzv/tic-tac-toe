@@ -13,12 +13,8 @@ class GameBlocService {
     _gameBloc.dispatch(LoginBlocEvent(username));
   }
 
-  void makeHumanMovement(CellPosition cellPosition) {
-    _gameBloc.dispatch(HumanMovementBlocEvent(cellPosition));
-  }
-
-  void makeComputerMovement() {
-    _gameBloc.dispatch(ComputerMovementBlocEvent());
+  void doGameMovement([CellPosition cellPosition]) {
+    _gameBloc.dispatch(GameMovementBlocEvent(cellPosition));
   }
 
   void newGame() {
@@ -28,7 +24,6 @@ class GameBlocService {
   Stream<GameState> get state {
     return _gameBloc.state; 
   }
-
 
   // internal
   ngOnDestroy() {

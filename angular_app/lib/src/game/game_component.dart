@@ -40,8 +40,9 @@ class GameComponent implements OnInit {
   }
 
   void onChooseCell(CellPosition cellPosition) {
-    _gameBlocService.makeHumanMovement(cellPosition);
-    Future.delayed(Duration(seconds: 1), () => _gameBlocService.makeComputerMovement());
+    _gameBlocService.doGameMovement(cellPosition);
+    // spawn the computer movement
+    Future.delayed(Duration(seconds: 1), () => _gameBlocService.doGameMovement());
   }
 
   void onNewGame() {
