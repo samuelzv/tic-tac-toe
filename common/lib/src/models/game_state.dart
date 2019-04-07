@@ -3,6 +3,7 @@ import './cell.dart';
 
 class GameState {
   List<List<Cell>> cells;
+  List<CellPosition> winningCombination = [];
   String username; 
   Player turn = Player.human;
   // bool isGameOver = false;

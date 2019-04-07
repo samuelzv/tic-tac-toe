@@ -3,7 +3,9 @@
     <div class="board__row">
       <template ngFor let-column [ngForOf]="row" let-columnIndex="index" class="board__column">
         <div class="board__column">
-          <material-fab mini raised class="" (trigger)="onChooseHuman(rowIndex, columnIndex)">
+          <material-fab mini raised 
+              [ngClass]="getClassForWinningCell(rowIndex, columnIndex)" 
+              (trigger)="onChooseHuman(rowIndex, columnIndex)">
               <material-icon [icon]="gameState.cells[rowIndex][columnIndex].icon">
               </material-icon>
           </material-fab>

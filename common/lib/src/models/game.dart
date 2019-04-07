@@ -55,7 +55,8 @@ class Game {
   }
 
   GamePhase _determineGamePhase() {
-      if (_isWinningCombination(_getMovementsFromCurrentPlayer())) {
+      _gameState.winningCombination = _getWinningCombination(_getMovementsFromCurrentPlayer());
+      if (_gameState.winningCombination.isNotEmpty) {
         return GamePhase.Finished;
       } else {
         // if there is no more cells to choose
@@ -89,9 +90,10 @@ class Game {
       }
   }
 
-  bool _isWinningCombination(List<CellPosition> movements) {
+  List<CellPosition> _getWinningCombination(List<CellPosition> movements) {
     int index = 0;
     bool isGameOver = false;
+    List<CellPosition> winningCombination = [];
 
     while (!isGameOver && index < _winningCombinations.length) {
       isGameOver = _winningCombinations[index].every((CellPosition position) {
@@ -106,10 +108,14 @@ class Game {
         return contains;
       });
 
-      index = index + 1;
+      if (isGameOver) {
+        winningCombination = _winningCombinations[index];
+      } else {
+        index = index + 1;
+      }
     }
 
-    return isGameOver;
+    return winningCombination;
   }
 
   List<List<Cell>> _getCells() => (_board != null) ?_board.getCells() : null;

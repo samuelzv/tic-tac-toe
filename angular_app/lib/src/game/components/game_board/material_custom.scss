@@ -11,5 +11,5 @@
   @include button-color($not-raised, $color);
 }
 
-@include colorize("material-fab.value--machine", $mat-red);
-@include colorize("material-fab.value--human", $mat-green);
+@include colorize("material-fab.computer--winner", $mat-red);
+@include colorize("material-fab.human--winner", $mat-green);

@@ -34,4 +34,30 @@ class GameBoardComponent {
   void onChooseHuman(int row, int column) {
     _chooseCell.add(CellPosition(row, column));
   }
+
+  bool belongToWinningCombination(Player player, int row, int column) {
+    if (gameState.phase == GamePhase.Finished) {
+      if (gameState.turn == player) {
+        return gameState.winningCombination
+                .any((CellPosition cellPosition) => cellPosition.row == row && cellPosition.column == column);
+      }
+    }
+
+    return false;
+  }
+
+  String getClassForWinningCell(int row, int column) {
+    if (gameState.phase == GamePhase.Finished) {
+        bool isPartOfWinningCombination = gameState.winningCombination
+                .any((CellPosition cellPosition) => cellPosition.row == row && cellPosition.column == column);
+
+        if (isPartOfWinningCombination) {
+          return (gameState.turn == Player.computer ? 'computer--winner' : 'human--winner');
+        }
+    }
+
+    return '';
+  }
+
+
 }
