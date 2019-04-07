@@ -1,11 +1,5 @@
 <div>
-    <material-button 
-        [disabled]="!gameState.isGameOver" 
-        raised 
-        (trigger)="onNewGame()">
+    <material-button [disabled]="!gameState.isGameOver" raised (trigger)="onNewGame()">
         New Game
-        <material-icon 
-            icon="play_circle_outline">
-        </material-icon>
     </material-button>
 </div>

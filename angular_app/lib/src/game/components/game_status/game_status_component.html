@@ -4,7 +4,6 @@
     </div>
 
     <div *ngIf="gameState.phase != GamePhase.Tied">
-        <div>Game is over</div>
         <div>You {{gameState.turn == Player.human ? 'win': 'loose'}}</div>
          
     </div>
