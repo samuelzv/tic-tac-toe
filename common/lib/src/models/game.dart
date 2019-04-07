@@ -2,6 +2,7 @@ import 'board.dart';
 import 'cell.dart';
 import 'player.dart';
 import 'game_state.dart';
+import 'score.dart';
 
 class Game {
   Board _board;
@@ -35,6 +36,10 @@ class Game {
     _gameState.username = value;
   }
 
+  set score(GameScore score) {
+    _gameState.score = score;
+  }
+
   void makeMovement([CellPosition cellPosition]) {
     if (_gameState.isGameOver) {
       return;
@@ -49,9 +54,22 @@ class Game {
     }
 
     _gameState.phase = _determineGamePhase();
-    if (!_gameState.isGameOver) {
+    if (_gameState.isGameOver) {
+      _setScore();
+    } else {
       _shiftTurn();
     }
+  }
+
+  void _setScore() {
+    if (_gameState.turn == Player.computer) {
+      _gameState.score.computer += 1;
+    } else if (_gameState.turn == Player.human) {
+      _gameState.score.human += 1;
+    } else {
+      _gameState.score.tied += 1;
+    }
+
   }
 
   GamePhase _determineGamePhase() {

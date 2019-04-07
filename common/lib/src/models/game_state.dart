@@ -1,14 +1,13 @@
 import './player.dart';
 import './cell.dart';
+import './score.dart';
 
 class GameState {
+  GameScore score = GameScore();
   List<List<Cell>> cells;
   List<CellPosition> winningCombination = [];
   String username; 
   Player turn = Player.human;
-  // bool isGameOver = false;
-  // bool isGameTied = false;
-  // bool isPristine = true;
   GamePhase phase = GamePhase.Pristine;
 
   GameState({this.cells});

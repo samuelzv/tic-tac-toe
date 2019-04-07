@@ -20,7 +20,9 @@ class GameBloc extends Bloc<BlocEvent, GameState> {
       yield game.state;
     } else if (event is NewGameBlocEvent) {
         // keep score
-        game.username = currentState.username;
+        game
+          ..username = currentState.username
+          ..score = currentState.score;
 
         yield game.state;
     } else if (event is GameMovementBlocEvent) {
