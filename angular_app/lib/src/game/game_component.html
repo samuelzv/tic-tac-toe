@@ -2,4 +2,5 @@
     <game-status [gameState]="gameState"></game-status>
     <game-board [gameState]="gameState" (chooseCell)="onChooseCell($event)"></game-board>
     <game-controls [gameState]="gameState" (newGame)="onNewGame()"></game-controls>
+    <game-score [gameState]="gameState"></game-score>
 </div>

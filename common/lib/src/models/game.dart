@@ -55,26 +55,28 @@ class Game {
 
     _gameState.phase = _determineGamePhase();
     if (_gameState.isGameOver) {
-      _setScore();
+      _updateScore();
     } else {
       _shiftTurn();
     }
   }
 
-  void _setScore() {
+  void _updateScore() {
+    if (_gameState.isGameTied) {
+      _gameState.score.tied += 1;
+      return;
+    }
+
     if (_gameState.turn == Player.computer) {
       _gameState.score.computer += 1;
     } else if (_gameState.turn == Player.human) {
       _gameState.score.human += 1;
-    } else {
-      _gameState.score.tied += 1;
-    }
-
+    } 
   }
 
   GamePhase _determineGamePhase() {
       _gameState.winningCombination = _getWinningCombination(_getMovementsFromCurrentPlayer());
-      if (_gameState.winningCombination.isNotEmpty) {
+      if (_isThereSomeWinner()) {
         return GamePhase.Finished;
       } else {
         // if there is no more cells to choose
@@ -91,6 +93,8 @@ class Game {
   }
 
   bool _isGameTied() => _board.isBoardFull();
+  
+  bool _isThereSomeWinner() => _gameState.winningCombination.isNotEmpty;
 
   void _shiftTurn() {
     _gameState.turn = (_gameState.turn == Player.human ? Player.computer : Player.human);

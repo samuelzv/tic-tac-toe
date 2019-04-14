@@ -1,0 +1,6 @@
+<h3>Score</h3>
+<div>
+    <acx-scorecard label="You" [value]="gameState.score.human.toString()" changeType="POSITIVE"></acx-scorecard>
+    <acx-scorecard label="Computer" [value]="gameState.score.computer.toString()" changeType="POSITIVE"></acx-scorecard>
+    <acx-scorecard label="Ties" [value]="gameState.score.tied.toString()" changeType="POSITIVE"></acx-scorecard>
+</div>

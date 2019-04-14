@@ -5,6 +5,7 @@ import 'package:angular_app/src/game/components/components.dart';
 import 'package:common/common.dart';
 
 import '../services/game_bloc_service.dart';
+import './components/game_score/game_score_component.dart';
 
 @Component(
   selector: 'game',
@@ -18,6 +19,7 @@ import '../services/game_bloc_service.dart';
   directives: [
     NgIf,
     GameBoardComponent,
+    GameScoreComponent,
     GameStatusComponent,
     GameControlsComponent,
   ],

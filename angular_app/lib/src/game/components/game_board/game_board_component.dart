@@ -32,7 +32,9 @@ class GameBoardComponent {
   get chooseCell => _chooseCell.stream;
 
   void onChooseHuman(int row, int column) {
-    _chooseCell.add(CellPosition(row, column));
+    if (gameState.cells[row][column].value == null) {
+      _chooseCell.add(CellPosition(row, column));
+    }
   }
 
   String getClassForWinningCell(int row, int column) {

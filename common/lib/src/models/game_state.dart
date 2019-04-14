@@ -13,6 +13,7 @@ class GameState {
   GameState({this.cells});
 
   bool get isGameOver => (phase == GamePhase.Finished || phase == GamePhase.Tied);
+  bool get isGameTied => phase == GamePhase.Tied;
 }
 
 enum GamePhase {
