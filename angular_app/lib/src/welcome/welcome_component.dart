@@ -14,6 +14,7 @@ import '../route_paths.dart';
   selector: 'welcome',
   templateUrl: 'welcome_component.html' ,
   styleUrls: [
+    'material_custom.css',
     'welcome_component.css'
   ],
   directives: [
