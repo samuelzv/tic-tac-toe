@@ -23,5 +23,5 @@ import 'src/routes.dart';
   exports: [RoutePaths, Routes]
 )
 class AppComponent {
-  String appName = 'Noughts and Crosses game';
+  String appName = 'Tic-Tac-Toe';
 }
