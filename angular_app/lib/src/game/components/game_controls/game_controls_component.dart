@@ -4,7 +4,7 @@ import 'package:angular_components/angular_components.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'game-controls',
+  selector: 'tictac-game-controls',
   styleUrls: [
     'material_custom.css',
     'game_controls_component.css'

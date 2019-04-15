@@ -1,6 +1,6 @@
 <div *ngIf="gameState != null" class="game"> 
-    <game-status [gameState]="gameState"></game-status>
-    <game-board [gameState]="gameState" (chooseCell)="onChooseCell($event)"></game-board>
-    <game-controls [gameState]="gameState" (newGame)="onNewGame()"></game-controls>
-    <game-score [gameState]="gameState"></game-score>
+    <tictac-game-status [gameState]="gameState"></tictac-game-status>
+    <tictac-game-board [gameState]="gameState" (chooseCell)="onChooseCell($event)"></tictac-game-board>
+    <tictac-game-controls [gameState]="gameState" (newGame)="onNewGame()"></tictac-game-controls>
+    <tictac-game-score [gameState]="gameState"></tictac-game-score>
 </div>

@@ -11,7 +11,7 @@ import '../services/game_bloc_service.dart';
 import '../route_paths.dart';
 
 @Component(
-  selector: 'welcome',
+  selector: 'tictac-welcome',
   templateUrl: 'welcome_component.html' ,
   styleUrls: [
     'material_custom.css',

@@ -6,7 +6,7 @@ import 'package:angular_bloc/angular_bloc.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'game-board',
+  selector: 'tictac-game-board',
   styleUrls: [
     'game_board_component.css',
     'material_custom.css'

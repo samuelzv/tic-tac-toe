@@ -10,7 +10,7 @@ import 'package:angular_components/utils/color/material.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'game-score',
+  selector: 'tictac-game-score',
   styleUrls: [
     'material_custom.css',
     'game_score_component.css'

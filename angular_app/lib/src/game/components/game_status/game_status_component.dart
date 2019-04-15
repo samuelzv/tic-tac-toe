@@ -2,7 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:common/common.dart';
 
 @Component(
-  selector: 'game-status',
+  selector: 'tictac-game-status',
   styleUrls: [
     'game_status_component.css'
   ],

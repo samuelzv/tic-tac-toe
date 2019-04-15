@@ -9,7 +9,7 @@ import 'src/routes.dart';
 // Components info: https://webdev.dartlang.org/components
 
 @Component(
-  selector: 'my-app',
+  selector: 'tictac-app',
   styleUrls: ['app_component.css'],
   template: '''
     <h1>{{appName}}</h1>
