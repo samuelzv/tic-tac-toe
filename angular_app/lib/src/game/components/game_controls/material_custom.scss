@@ -1,0 +1,4 @@
+@import 'package:angular_components/css/material/material';
+@import '../../../shared/styles/colorize_mixin.scss';
+
+@include colorize("material-button", $mat-green);

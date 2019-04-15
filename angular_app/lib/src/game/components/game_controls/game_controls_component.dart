@@ -6,6 +6,7 @@ import 'package:common/common.dart';
 @Component(
   selector: 'game-controls',
   styleUrls: [
+    'material_custom.css',
     'game_controls_component.css'
   ],
   templateUrl: 'game_controls_component.html',
