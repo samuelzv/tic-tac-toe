@@ -1,0 +1,14 @@
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/scorecard/mixins';
+
+.custom-rule {
+    $custom-rule-align: center;
+    @include acx-scorecard-title() {
+      color: $mat-green-500;
+      text-align: $custom-rule-align;
+    }
+  
+    @include acx-scorecard-value() {
+      text-align: $custom-rule-align;
+    }
+  }

@@ -12,6 +12,7 @@ import 'package:common/common.dart';
 @Component(
   selector: 'game-score',
   styleUrls: [
+    'material_custom.css',
     'game_score_component.css'
   ],
   exports: [
