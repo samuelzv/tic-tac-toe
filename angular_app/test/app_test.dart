@@ -28,7 +28,7 @@ void main() {
   test('Should show app name', () async {
     final fixture = await testBed.create();
 
-    expect(fixture.text.trim(), 'Noughts and Crosses game');
+    expect(fixture.text.trim(), 'Tic-Tac-Toe');
   });
 
   test('Should change app name', () async {
