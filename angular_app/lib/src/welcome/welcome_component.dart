@@ -6,7 +6,6 @@ import 'package:angular_components/angular_components.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
-// import 'package:common/common.dart';
 import '../services/game_bloc_service.dart';
 import '../route_paths.dart';
 
@@ -14,7 +13,6 @@ import '../route_paths.dart';
   selector: 'tictac-welcome',
   templateUrl: 'welcome_component.html' ,
   styleUrls: [
-    'material_custom.css',
     'welcome_component.css'
   ],
   directives: [

@@ -1,3 +1,9 @@
+
+@import 'package:angular_components/css/material/material';
+@import '../../../shared/styles/mixins/colorize_button';
+
+@include colorize("material-button.new-game", $mat-green);
+
 :host {
     width: 80%;
     display: flex;

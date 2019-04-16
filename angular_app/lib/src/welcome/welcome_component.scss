@@ -1,3 +1,7 @@
+@import 'package:angular_components/css/material/material';
+
+@import '../shared/styles/mixins/colorize_button';
+
 .welcome,
 form {
     align-items: center;
@@ -9,3 +13,5 @@ form {
 material-icon {
     margin-left: 5px;
 }
+
+@include colorize(".welcome material-button", $mat-green);

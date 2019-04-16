@@ -1,5 +1,9 @@
 <div>
-    <material-button [disabled]="!gameState.isGameOver" raised (trigger)="onNewGame()">
+    <material-button class="new-game" [disabled]="!gameState.isGameOver" raised (trigger)="onNewGame()">
         New Game
+    </material-button>
+
+    <material-button raised (trigger)="onLogout()">
+        Logout
     </material-button>
 </div>

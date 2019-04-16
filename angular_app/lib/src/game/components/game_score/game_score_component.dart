@@ -12,7 +12,6 @@ import 'package:common/common.dart';
 @Component(
   selector: 'tictac-game-score',
   styleUrls: [
-    'material_custom.css',
     'game_score_component.css'
   ],
   exports: [
