@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './../../game/game.dart';
 
 class WelcomeForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -9,18 +10,22 @@ class WelcomeForm extends StatelessWidget {
     return  SingleChildScrollView(
       padding: EdgeInsets.all(8.0),
       child: Container(
-        child: _getForm(),
+        child: _getForm(context),
       ) 
     );
   }
 
-  void _moveToGameScreen() {
+  void _moveToGameScreen(BuildContext context) {
     if (_formKey.currentState.validate()) {
       print('Moving to next window');
+      Navigator.push(
+        context, 
+        MaterialPageRoute(builder: (context) => Game())
+      );
     }
   }
 
-  Form _getForm() {
+  Form _getForm(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
@@ -35,7 +40,7 @@ class WelcomeForm extends StatelessWidget {
           }),
           SizedBox(height: _paddingHeight),
           RaisedButton(
-            onPressed: _moveToGameScreen,
+            onPressed: () => _moveToGameScreen(context),
             child: Text('Login'),
           )
         ],
