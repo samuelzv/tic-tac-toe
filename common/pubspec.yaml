@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   equatable: ^0.1.0
-  bloc: ^0.11.0
+  bloc: ^0.12.0
   path: ^1.4.1
 
 dev_dependencies:

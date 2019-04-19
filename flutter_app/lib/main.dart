@@ -1,28 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:common/common.dart';
 import './screens/welcome/welcome.dart';
 
 void main() => runApp(MyApp());
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final GameBloc _gameBloc = GameBloc();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tic-Tac-Toe',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: BlocProvider<GameBloc>(
+        bloc: _gameBloc,
+        child: WelcomeScreen(),
+      ) 
+    );
+  }
+
+  @override
+  void dispose() {
+    _gameBloc.dispose();
+    super.dispose();
+  }
+}
+
+/*
 class MyApp extends StatelessWidget {
+  final GameBloc _gameBloc = GameBloc();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tic-Tac-Toe',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      home: BlocProvider<GameBloc>(
+        bloc: _gameBloc,
+        child: WelcomeScreen(),
+      ) 
     );
   }
+  @override
+  void dispose() {
+    _gameBloc.dispose();
+    super.dispose();
+  }
 }
+*/

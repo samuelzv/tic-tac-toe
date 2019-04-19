@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:common/common.dart';
 import './../../game/game.dart';
 
 class WelcomeForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final Function _onLogin;
   final _paddingHeight = 50.0;
+
+  WelcomeForm(this._onLogin); 
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,15 @@ class WelcomeForm extends StatelessWidget {
   void _moveToGameScreen(BuildContext context) {
     if (_formKey.currentState.validate()) {
       print('Moving to next window');
+      // print(this._gameState.username);
+      _onLogin('fulano');
+
+      /*
       Navigator.push(
         context, 
-        MaterialPageRoute(builder: (context) => Game())
+        MaterialPageRoute(builder: (context) => GamePage())
       );
+      */
     }
   }
 
