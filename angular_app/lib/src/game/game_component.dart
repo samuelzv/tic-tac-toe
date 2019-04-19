@@ -30,14 +30,14 @@ import '../route_paths.dart';
 class GameComponent implements OnInit {
   final GameBlocService _gameBlocService;
   final Router _router; 
-  GameState gameState;
+  DataState gameState;
 
   GameComponent(this._gameBlocService, this._router);
 
   @override
   void ngOnInit() async {
     _gameBlocService.state
-      .listen((GameState state) { 
+      .listen((DataState state) { 
         if (state.username == null) {
           this._router.navigate(RoutePaths.welcome.toUrl());
         } else {

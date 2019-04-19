@@ -26,7 +26,7 @@ import 'package:common/common.dart';
   pipes: [BlocPipe]
 )
 class GameBoardComponent {
-  @Input() GameState gameState;
+  @Input() DataState gameState;
   final _chooseCell = new StreamController<CellPosition>();
   @Output() 
   get chooseCell => _chooseCell.stream;

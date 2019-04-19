@@ -8,12 +8,12 @@ import 'package:common/src/models/game_state.dart';
 void main() {
   List<List<Cell>> cells;
   Game game;
-  GameState gameState;
+  DataState gameState;
 
   setUp(() {
     game = Game();
     cells = getEmptyCells();
-    gameState = GameState(cells: cells);
+    gameState = DataState(cells: cells);
   });
 
   group('Setting the turn', () {

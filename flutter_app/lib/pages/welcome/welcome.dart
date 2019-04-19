@@ -15,13 +15,13 @@ class WelcomePage extends StatelessWidget {
       ),
       body: BlocListener(
         bloc: BlocProvider.of<GameBloc>(context),
-        listener: (BuildContext context, GameState state) {
+        listener: (BuildContext context, DataState state) {
           print('The state is:');
           print(state);
         },
         child: BlocBuilder(
           bloc: BlocProvider.of<GameBloc>(context),
-          builder: (BuildContext context, GameState gameState) {
+          builder: (BuildContext context, DataState gameState) {
             return WelcomeForm((String username) =>_gameBloc.dispatch(LoginBlocEvent(username)));
           }
         ),

@@ -34,5 +34,5 @@ import 'package:common/common.dart';
   pipes: []
 )
 class GameScoreComponent {
-  @Input() GameState gameState;
+  @Input() DataState gameState;
 }

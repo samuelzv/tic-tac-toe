@@ -6,12 +6,12 @@ import './../models/models.dart';
 import '../bloc_event.dart';
 import './game_bloc_event.dart';
 
-class GameBloc extends Bloc<BlocEvent, GameState> {
+class GameBloc extends Bloc<BlocEvent, DataState> {
   @override
-  GameState get initialState => Game().state;
+  DataState get initialState => Game().state;
 
   @override
-  Stream<GameState> mapEventToState(BlocEvent event) async* {
+  Stream<DataState> mapEventToState(BlocEvent event) async* {
     Game game = Game();
 
     if (event is LoginBlocEvent) {

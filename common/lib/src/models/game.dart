@@ -6,7 +6,7 @@ import 'score.dart';
 
 class Game {
   Board _board;
-  GameState _gameState;
+  DataState _gameState;
   List<List<CellPosition>> _winningCombinations = [];
 
   Game() {
@@ -24,10 +24,10 @@ class Game {
       [CellPosition(0, 2), CellPosition(1, 1), CellPosition(2, 0)], 
     ];
     _board = Board();
-    _gameState = GameState(cells: _board.getCells());
+    _gameState = DataState(cells: _board.getCells());
   }
 
-  setState(GameState newState) {
+  setState(DataState newState) {
     _board.setCells(newState.cells);
     _gameState = newState;
   }
@@ -142,7 +142,7 @@ class Game {
 
   List<List<Cell>> _getCells() => (_board != null) ?_board.getCells() : null;
 
-  GameState get state {
+  DataState get state {
     return _gameState
             ..cells =_getCells();
   }

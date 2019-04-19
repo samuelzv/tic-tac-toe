@@ -19,7 +19,7 @@ import '../../../route_paths.dart';
   pipes: []
 )
 class GameControlsComponent {
-  @Input() GameState gameState;
+  @Input() DataState gameState;
   final _newGame = new StreamController<void>();
   @Output() get newGame => _newGame.stream;
   final Router _router;

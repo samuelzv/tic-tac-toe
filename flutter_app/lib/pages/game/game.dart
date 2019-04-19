@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class GamePage extends StatefulWidget {
   @override
-  _GameState createState() => _GameState();
+  _GamePageState createState() => _GamePageState();
 }
 
-class _GameState extends State<GamePage> {
+class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

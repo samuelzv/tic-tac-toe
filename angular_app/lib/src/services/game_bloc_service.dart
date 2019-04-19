@@ -21,7 +21,7 @@ class GameBlocService {
     _gameBloc.dispatch(NewGameBlocEvent());
   }
 
-  Stream<GameState> get state {
+  Stream<DataState> get state {
     return _gameBloc.state; 
   }
 
