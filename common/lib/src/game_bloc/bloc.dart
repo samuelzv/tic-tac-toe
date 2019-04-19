@@ -17,21 +17,21 @@ class GameBloc extends Bloc<BlocEvent, DataState> {
     if (event is LoginBlocEvent) {
       game.username = event.username;
 
-      yield game.state;
+      yield Login(game.state);
     } else if (event is NewGameBlocEvent) {
         // keep score
         game
           ..username = currentState.username
           ..score = currentState.score;
 
-        yield game.state;
+        yield NewGame(game.state);
     } else if (event is GameMovementBlocEvent) {
       game.setState(currentState);
       game.makeMovement(event.cellPosition);
 
-      yield game.state;
+      yield Movement(game.state);
     } else {
-      yield currentState;
+      yield Initial(currentState);
     }
   }
 }

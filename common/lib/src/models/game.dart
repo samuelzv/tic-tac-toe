@@ -1,8 +1,9 @@
-import 'board.dart';
-import 'cell.dart';
-import 'player.dart';
-import 'game_state.dart';
-import 'score.dart';
+// import 'board.dart';
+// import 'cell.dart';
+// import 'player.dart';
+// import 'game_state.dart';
+// import 'score.dart';
+import './models.dart';
 
 class Game {
   Board _board;
