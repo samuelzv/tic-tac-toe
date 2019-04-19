@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:common/common.dart';
-import './screens/welcome/welcome.dart';
+import './pages/welcome/welcome.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: BlocProvider<GameBloc>(
         bloc: _gameBloc,
-        child: WelcomeScreen(),
+        child: WelcomePage(),
       ) 
     );
   }
@@ -34,29 +34,3 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 }
-
-/*
-class MyApp extends StatelessWidget {
-  final GameBloc _gameBloc = GameBloc();
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tic-Tac-Toe',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: BlocProvider<GameBloc>(
-        bloc: _gameBloc,
-        child: WelcomeScreen(),
-      ) 
-    );
-  }
-  @override
-  void dispose() {
-    _gameBloc.dispose();
-    super.dispose();
-  }
-}
-*/
