@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/board.dart';
 
 class GamePage extends StatefulWidget {
   @override
@@ -17,7 +18,8 @@ class _GamePageState extends State<GamePage> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Text('This is a super game')
+              Text('This is a super game'),
+              Board()
             ],
           ),
         ),
