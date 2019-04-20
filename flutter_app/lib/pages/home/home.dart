@@ -31,7 +31,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('THIS IS THE BUILD');
     return Container(
       child: BlocBuilder(
           bloc: BlocProvider.of<GameBloc>(context),
@@ -41,6 +40,7 @@ class HomePage extends StatelessWidget {
             }
 
             if (state is Login)  {
+              print(state);
               return GamePage();
             }
 
@@ -51,29 +51,6 @@ class HomePage extends StatelessWidget {
             } 
           }
         )
-      /*child: BlocListener(
-        bloc: _gameBloc, 
-        listener: (BuildContext context, DataState state) {
-          if (state is Welcome) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => LoginPage())
-            );
-          } else {
-            if (state is Login) {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => GamePage())
-              );
-            }
-          }
-          // print('hello');
-        },
-        child: BlocBuilder(
-          bloc: _gameBloc,
-          builder: (BuildContext context, DataState state) {
-              return _homeWidget(() => _gameBloc.dispatch(WelcomeBlocEvent()));
-          }
-        ),
-      ),*/ 
     ); 
   }
 }

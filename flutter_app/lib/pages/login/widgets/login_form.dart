@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-// import 'package:common/common.dart';
-// import './../../game/game.dart';
 
-class LoginForm extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
+class LoginForm extends StatefulWidget {
   final Function _onLogin;
-  final _paddingHeight = 50.0;
 
   LoginForm(this._onLogin); 
 
+  @override
+  _LoginFormState createState() => _LoginFormState() ;
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _userTextController = TextEditingController();
+  final _paddingHeight = 50.0;
+
+  @override
+  void dispose() { 
+    _userTextController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return  SingleChildScrollView(
@@ -19,18 +29,11 @@ class LoginForm extends StatelessWidget {
     );
   }
 
-  void _moveToGameScreen(BuildContext context) {
+  void _moveToGameScreen(String username) {
     if (_formKey.currentState.validate()) {
       print('Moving to next window');
       // print(this._gameState.username);
-      _onLogin('fulano');
-
-      /*
-      Navigator.push(
-        context, 
-        MaterialPageRoute(builder: (context) => GamePage())
-      );
-      */
+      widget._onLogin(username);
     }
   }
 
@@ -42,14 +45,17 @@ class LoginForm extends StatelessWidget {
           Text('Welcome!'),
           SizedBox(height: _paddingHeight),
           Text('What is your name?'),
-          TextFormField(validator: (String value) {
-            if (value.isEmpty) {
-              return 'Your name is required';
+          TextFormField(
+            controller: _userTextController,
+            validator: (String value) {
+              if (value.isEmpty) {
+                return 'Your name is required';
+              }
             }
-          }),
+          ),
           SizedBox(height: _paddingHeight),
           RaisedButton(
-            onPressed: () => _moveToGameScreen(context),
+            onPressed: () => _moveToGameScreen(_userTextController.text),
             child: Text('Login'),
           )
         ],

@@ -23,6 +23,10 @@ class DataState {
     turn = state.turn;
     phase = state.phase;
   }
+  @override
+  toString() {
+    return 'username:$username\nturn:$turn\nphase:$phase\nscore:$score';
+  }
 }
 
 class Welcome extends DataState{
