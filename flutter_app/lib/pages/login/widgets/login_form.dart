@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:common/common.dart';
-import './../../game/game.dart';
+// import 'package:common/common.dart';
+// import './../../game/game.dart';
 
-class WelcomeForm extends StatelessWidget {
+class LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final Function _onLogin;
   final _paddingHeight = 50.0;
 
-  WelcomeForm(this._onLogin); 
+  LoginForm(this._onLogin); 
 
   @override
   Widget build(BuildContext context) {

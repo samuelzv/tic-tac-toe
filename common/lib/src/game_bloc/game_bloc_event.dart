@@ -11,6 +11,9 @@ class GameMovementBlocEvent extends BlocEvent {
   GameMovementBlocEvent(this.cellPosition);
 }
 
+class WelcomeBlocEvent extends BlocEvent {
+}
+
 class LoginBlocEvent extends BlocEvent {
   final String username;
 

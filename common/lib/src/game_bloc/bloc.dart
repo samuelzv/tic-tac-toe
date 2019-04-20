@@ -14,7 +14,10 @@ class GameBloc extends Bloc<BlocEvent, DataState> {
   Stream<DataState> mapEventToState(BlocEvent event) async* {
     Game game = Game();
 
-    if (event is LoginBlocEvent) {
+    if(event is WelcomeBlocEvent) {
+      print('Throwing a Welcome');
+      yield Welcome(game.state);
+    } else if (event is LoginBlocEvent) {
       game.username = event.username;
 
       yield Login(game.state);
@@ -31,7 +34,7 @@ class GameBloc extends Bloc<BlocEvent, DataState> {
 
       yield Movement(game.state);
     } else {
-      yield Initial(currentState);
+      yield null;
     }
   }
 }

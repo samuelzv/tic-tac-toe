@@ -25,8 +25,8 @@ class DataState {
   }
 }
 
-class Initial extends DataState{
-  Initial(DataState state): super.fromState(state);
+class Welcome extends DataState{
+  Welcome(DataState state): super.fromState(state);
 }
 
 class Login extends DataState{
