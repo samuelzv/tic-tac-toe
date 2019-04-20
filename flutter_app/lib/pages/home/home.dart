@@ -38,7 +38,11 @@ class HomePage extends StatelessWidget {
           builder: (BuildContext context, DataState state) {
             if (state is Welcome) {
                 return LoginPage();
-              }
+            }
+
+            if (state is Login)  {
+              return GamePage();
+            }
 
             if (state is DataState || state == null) {
               return _homeWidget(() {

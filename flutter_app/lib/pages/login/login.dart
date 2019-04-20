@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
       body: BlocBuilder(
           bloc: BlocProvider.of<GameBloc>(context),
           builder: (BuildContext context, DataState gameState) {
-            return LoginForm((String username) => print('hello') /*_gameBloc.dispatch(LoginBlocEvent(username)) */);
+            return LoginForm((String username) => BlocProvider.of<GameBloc>(context).dispatch(LoginBlocEvent(username)));
           }
         ) 
     );
