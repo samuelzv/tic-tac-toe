@@ -12,8 +12,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Welcome'),
       ),
-      body: Container(
-        child: Center(
+      body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -21,10 +20,9 @@ class HomePage extends StatelessWidget {
               RaisedButton(
                 child: Text('Start'),
                 onPressed: onStart ,
-              )
+              ),
             ],
           ),
-        ),
       ),
     );
   }
