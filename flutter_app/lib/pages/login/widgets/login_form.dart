@@ -21,12 +21,7 @@ class _LoginFormState extends State<LoginForm> {
   }
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-      padding: EdgeInsets.all(8.0),
-      child: Container(
-        child: _getForm(context),
-      ) 
-    );
+    return _getForm(context);
   }
 
   void _moveToGameScreen(String username) {
@@ -37,29 +32,34 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  Form _getForm(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          Text('Welcome!'),
-          SizedBox(height: _paddingHeight),
-          Text('What is your name?'),
-          TextFormField(
-            controller: _userTextController,
-            validator: (String value) {
-              if (value.isEmpty) {
-                return 'Your name is required';
-              }
-            }
-          ),
-          SizedBox(height: _paddingHeight),
-          RaisedButton(
-            onPressed: () => _moveToGameScreen(_userTextController.text),
-            child: Text('Login'),
+  Widget _getForm(BuildContext context) {
+    return  SingleChildScrollView(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              Text('Welcome!'),
+              SizedBox(height: _paddingHeight),
+              Text('What is your name?'),
+              TextFormField(
+                controller: _userTextController,
+                validator: (String value) {
+                  if (value.isEmpty) {
+                    return 'Your name is required';
+                  }
+                }
+              ),
+              SizedBox(height: _paddingHeight),
+              RaisedButton(
+                onPressed: () => _moveToGameScreen(_userTextController.text),
+                child: Text('Login'),
+              )
+            ],
           )
-        ],
-      )
+        ) 
+      ) 
     );
   }
 }
