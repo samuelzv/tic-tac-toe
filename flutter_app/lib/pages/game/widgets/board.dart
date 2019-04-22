@@ -21,10 +21,14 @@ class Board  extends StatelessWidget {
             elevation: 0.0,
             child: icon,
             foregroundColor: Colors.black,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.white70,
             // backgroundColor: new Color(0xFFE57373),
             onPressed: (){
-              BlocProvider.of<GameBloc>(context).dispatch(GameMovementBlocEvent(cell.position));
+              GameBloc gameBloc = BlocProvider.of<GameBloc>(context);
+
+              gameBloc.dispatch(GameMovementBlocEvent(cell.position));
+              // Trigger computer movement
+              Future.delayed(Duration(seconds: 1), () => gameBloc.dispatch(GameMovementBlocEvent(null)));
             }
           ),
        )
