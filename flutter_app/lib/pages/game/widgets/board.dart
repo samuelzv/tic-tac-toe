@@ -5,10 +5,18 @@ import 'package:common/common.dart';
 
 class Board  extends StatelessWidget {
 
-  GridTile _getGridTile(Cell cell, BuildContext context) {
+  GridTile _getGridTile(DataState state, Cell cell, BuildContext context) {
     Icon icon;
+    Color backgroundColor = Colors.white;
+    Color foregroundColor = Colors.black;
+
     if (cell.value != null) {
       icon =  (cell.value == Player.computer) ? Icon(Icons.android) : Icon(Icons.pets);
+    }
+
+    if (cell.belongsToWinningCombination) {
+      foregroundColor = Colors.white;
+      backgroundColor =  (state.turn == Player.human) ?  Colors.blue :  Colors.red;
     }
 
      return GridTile(
@@ -20,8 +28,8 @@ class Board  extends StatelessWidget {
           child: FloatingActionButton(
             elevation: 0.0,
             child: icon,
-            foregroundColor: Colors.black,
-            backgroundColor: Colors.white70,
+            foregroundColor: foregroundColor, 
+            backgroundColor: backgroundColor, 
             // backgroundColor: new Color(0xFFE57373),
             onPressed: (){
               GameBloc gameBloc = BlocProvider.of<GameBloc>(context);
@@ -35,26 +43,26 @@ class Board  extends StatelessWidget {
     );
   }
 
-  List<GridTile> _getGridTiles(List<List<Cell>> cells, BuildContext context) {
-    return _getFlattenCells(cells, context)
-          .map((Cell cell) => _getGridTile(cell, context)).toList();
+  List<GridTile> _getGridTiles(DataState state, BuildContext context) {
+    return _getFlattenCells(state, context)
+          .map((Cell cell) => _getGridTile(state, cell, context)).toList();
   }
 
-  Widget _board(List<List<Cell>> cells, BuildContext context) {
+  Widget _board(DataState state, BuildContext context) {
     return GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1,
         padding: EdgeInsets.all(40.0),
-        children: _getGridTiles(cells, context)
+        children: _getGridTiles(state, context)
     );
   }
 
-  List<Cell> _getFlattenCells(List<List<Cell>> cells, BuildContext context) {
+  List<Cell> _getFlattenCells(DataState state, BuildContext context) {
     List<Cell> flatten = [];
 
-    for (int row = 0;  row < cells.length; row++) {
-      for (int col = 0; col < cells[row].length; col++) {
-        flatten.add(cells[row][col]);
+    for (int row = 0;  row < state.cells.length; row++) {
+      for (int col = 0; col < state.cells[row].length; col++) {
+        flatten.add(state.cells[row][col]);
       }
     }
 
@@ -76,7 +84,7 @@ class Board  extends StatelessWidget {
                 child: Center(
                   child: Container(
                     height: MediaQuery.of(context).size.height * .7 ,
-                    child: _board(gameState.cells, context) 
+                    child: _board(gameState, context) 
                   )
                 )
               ),  
