@@ -42,6 +42,10 @@ class HomePage extends StatelessWidget {
               return GamePage();
             }
 
+            if (state is Movement) {
+              return GamePage();
+            }
+
             if (state is DataState || state == null) {
               return _homeWidget(() {
                 BlocProvider.of<GameBloc>(context).dispatch(WelcomeBlocEvent()); 

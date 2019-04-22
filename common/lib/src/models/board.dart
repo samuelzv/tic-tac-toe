@@ -13,7 +13,7 @@ class Board {
   void _setInitialCells() {
     // setCells(_getInitialCells(_boardSize));
     _cells = List<List<Cell>>.generate(_boardSize, (int row) => 
-      List<Cell>.generate(_boardSize, (int column) => Cell()));
+      List<Cell>.generate(_boardSize, (int column) => Cell(row, column)));
   }
 
   void setCell(CellPosition cellPosition, Player player) {

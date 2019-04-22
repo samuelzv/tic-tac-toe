@@ -6,6 +6,9 @@ const String COMPUTER_ICON = 'android';
 class Cell {
   String _icon = '';
   Player _value;
+  final CellPosition position;
+
+  Cell(int row, int column): position = CellPosition(row, column);
 
   void choose(Player player) {
     _value = player;

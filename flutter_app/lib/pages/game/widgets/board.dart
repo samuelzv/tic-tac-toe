@@ -5,29 +5,47 @@ import 'package:common/common.dart';
 
 class Board  extends StatelessWidget {
 
-  Widget _board(List<List<Cell>> cells) {
+  GridTile _getGridTile(Cell cell, BuildContext context) {
+    Icon icon;
+    if (cell.value != null) {
+      icon =  (cell.value == Player.computer) ? Icon(Icons.android) : Icon(Icons.pets);
+    }
+
+     return GridTile(
+        child: Container(
+          padding: EdgeInsets.all(25.0),
+          decoration: new BoxDecoration(
+            border: new Border.all(color: Colors.blueAccent)
+          ),
+          child: FloatingActionButton(
+            elevation: 0.0,
+            child: icon,
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.grey,
+            // backgroundColor: new Color(0xFFE57373),
+            onPressed: (){
+              BlocProvider.of<GameBloc>(context).dispatch(GameMovementBlocEvent(cell.position));
+            }
+          ),
+       )
+    );
+  }
+
+  List<GridTile> _getGridTiles(List<List<Cell>> cells, BuildContext context) {
+    return _getFlattenCells(cells, context)
+          .map((Cell cell) => _getGridTile(cell, context)).toList();
+  }
+
+  Widget _board(List<List<Cell>> cells, BuildContext context) {
     return GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1,
         padding: EdgeInsets.all(40.0),
-        mainAxisSpacing: 80.0,
-        crossAxisSpacing: 80.0,
-        children: _getFlattenCells(cells)
-          .map((Cell cell) {
-            return GridTile(
-              child: FloatingActionButton(
-                elevation: 0.0,
-                child: new Icon(Icons.check),
-                // backgroundColor: new Color(0xFFE57373),
-                onPressed: (){}
-              ),
-            );
-          }
-        ).toList()
+        children: _getGridTiles(cells, context)
     );
   }
 
-  List<Cell> _getFlattenCells(List<List<Cell>> cells) {
+  List<Cell> _getFlattenCells(List<List<Cell>> cells, BuildContext context) {
     List<Cell> flatten = [];
 
     for (int row = 0;  row < cells.length; row++) {
@@ -54,7 +72,7 @@ class Board  extends StatelessWidget {
                 child: Center(
                   child: Container(
                     height: MediaQuery.of(context).size.height * .7 ,
-                    child: _board(gameState.cells) 
+                    child: _board(gameState.cells, context) 
                   )
                 )
               ),  
