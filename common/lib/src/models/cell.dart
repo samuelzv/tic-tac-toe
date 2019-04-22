@@ -6,13 +6,25 @@ const String COMPUTER_ICON = 'android';
 class Cell {
   String _icon = '';
   Player _value;
-  final CellPosition position;
+  bool _belongsToWinningCombination = false;
+  final CellPosition _position;
 
-  Cell(int row, int column): position = CellPosition(row, column);
+  Cell(int row, int column): _position = CellPosition(row, column);
 
   void choose(Player player) {
     _value = player;
     _icon = (player == Player.human ? HUMAN_ICON : COMPUTER_ICON);
+  }
+
+  CellPosition get position {
+    return _position;
+  }
+
+  bool get belongsToWinningCombination {
+    return _belongsToWinningCombination;
+  }
+  set belongsToWinningCombination(bool belongs) {
+    _belongsToWinningCombination = belongs;
   }
 
   String get icon {

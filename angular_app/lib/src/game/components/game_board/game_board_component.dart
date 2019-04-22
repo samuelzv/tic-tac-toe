@@ -37,16 +37,10 @@ class GameBoardComponent {
     }
   }
 
-  String getClassForWinningCell(int row, int column) {
-    if (gameState.phase == GamePhase.Finished) {
-        bool isPartOfWinningCombination = gameState.winningCombination
-                .any((CellPosition cellPosition) => cellPosition.row == row && cellPosition.column == column);
-
-        if (isPartOfWinningCombination) {
-          return (gameState.turn == Player.computer ? 'computer--winner' : 'human--winner');
-        }
+  String getClassForWinningCell(Cell cell) {
+    if (cell.belongsToWinningCombination) {
+      return (gameState.turn == Player.computer ? 'computer--winner' : 'human--winner');
     }
-
     return '';
   }
 }

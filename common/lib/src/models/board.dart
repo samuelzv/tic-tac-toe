@@ -71,4 +71,20 @@ class Board {
 
     return value;
   }
+
+  void standoutWinningCombination(List<CellPosition> winningCombination) {
+    if (winningCombination == null) {
+      return;
+    }
+
+     for(int row = 0; row < _cells.length; row++) {
+      for (int column = 0; column < _cells.length; column++) {
+        winningCombination.forEach((CellPosition position) {
+          if (row == position.row && column == position.column) {
+            _cells[row][column].belongsToWinningCombination = true;
+          }
+        });
+      }
+    }
+  }
 }

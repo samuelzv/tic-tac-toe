@@ -55,11 +55,19 @@ class Game {
     }
 
     _gameState.phase = _determineGamePhase();
+    if (_gameState.phase == GamePhase.Finished) {
+      this.standoutWinningCombination();
+    }
+
     if (_gameState.isGameOver) {
       _updateScore();
     } else {
       _shiftTurn();
     }
+  }
+
+  void standoutWinningCombination() {
+    _board.standoutWinningCombination(_gameState.winningCombination);
   }
 
   void _updateScore() {
