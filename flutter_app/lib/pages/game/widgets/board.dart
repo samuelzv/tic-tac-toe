@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:common/common.dart';
 
-class Board  extends StatelessWidget {
-
+class GameBoard  extends StatelessWidget {
   GridTile _getGridTile(DataState state, Cell cell, BuildContext context) {
     Icon icon;
     Color backgroundColor = Colors.white;
@@ -23,7 +22,7 @@ class Board  extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(25.0),
           decoration: new BoxDecoration(
-            border: new Border.all(color: Colors.blueAccent)
+            border: new Border.all(color: Colors.black)
           ),
           child: FloatingActionButton(
             elevation: 0.0,
@@ -74,25 +73,7 @@ class Board  extends StatelessWidget {
     return BlocBuilder(
       bloc: BlocProvider.of<GameBloc>(context),
       builder: (BuildContext context, DataState gameState) {
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [ 
-              Text('This is a Header2'),
-              Expanded(
-                child: Center(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .7 ,
-                    child: _board(gameState, context) 
-                  )
-                )
-              ),  
-              Text('These are the play buttons'),
-              Text('This is the score ${MediaQuery.of(context).size.height}'),
-            ]
-          )
-        );
+        return _board(gameState, context);
       }
     );
   }
