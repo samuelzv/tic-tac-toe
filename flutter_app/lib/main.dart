@@ -6,7 +6,7 @@ import 'package:common/common.dart';
 import './pages/home/home.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  // debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 

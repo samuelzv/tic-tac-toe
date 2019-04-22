@@ -8,14 +8,19 @@ class Board  extends StatelessWidget {
   Widget _board(List<List<Cell>> cells) {
     return GridView.count(
         crossAxisCount: 3,
-        childAspectRatio: 1.0,
+        childAspectRatio: 1,
         padding: EdgeInsets.all(3.0),
-        mainAxisSpacing: 3.0,
-        crossAxisSpacing: 3.0,
+        mainAxisSpacing: 60.0,
+        crossAxisSpacing: 60.0,
         children: _getFlattenCells(cells)
           .map((Cell cell) {
             return GridTile(
-              child: Text('Hello'),
+              child: FloatingActionButton(
+                elevation: 0.0,
+                child: new Icon(Icons.check),
+                // backgroundColor: new Color(0xFFE57373),
+                onPressed: (){}
+              ),
             );
           }
         ).toList()
