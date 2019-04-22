@@ -13,17 +13,10 @@ class _GamePageState extends State<GamePage> {
       appBar: AppBar(
         title: Text('Tic-Tac-Toe Game'),
       ),
-      body: Container(
-        padding: EdgeInsets.all(32.0),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Text('This is a super game'),
-              Board()
-            ],
-          ),
+      body: 
+        Center(
+          child: Board(),
         ),
-      ),
     );
   }
 }

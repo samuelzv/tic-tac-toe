@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
 
   Widget _getForm(BuildContext context) {
     return  SingleChildScrollView(
-      padding: EdgeInsets.all(8.0),
+      // padding: EdgeInsets.all(8.0),
       child: Container(
         child: Form(
           key: _formKey,

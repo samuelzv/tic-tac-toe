@@ -6,9 +6,9 @@ import 'package:common/common.dart';
 class Board  extends StatelessWidget {
 
   Widget _board(List<List<Cell>> cells) {
-    return SizedBox(
+    return /*SizedBox(
       height: 180.0,
-      child: GridView.count(
+      child:*/ GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1.0,
         padding: EdgeInsets.all(3.0),
@@ -21,8 +21,8 @@ class Board  extends StatelessWidget {
             );
           }
         ).toList()
-      )
-    );
+      );
+    // );
   }
 
   List<Cell> _getFlattenCells(List<List<Cell>> cells) {
@@ -47,7 +47,7 @@ class Board  extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [ 
             Text('This is a Header'),
-            _board(gameState.cells),  
+            Expanded(child:_board(gameState.cells)),  
             Text('These are the play buttons'),
             Text('This is the score'),
           ]
