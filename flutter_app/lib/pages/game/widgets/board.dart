@@ -9,9 +9,9 @@ class Board  extends StatelessWidget {
     return GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1,
-        padding: EdgeInsets.all(3.0),
-        mainAxisSpacing: 60.0,
-        crossAxisSpacing: 60.0,
+        padding: EdgeInsets.all(40.0),
+        mainAxisSpacing: 80.0,
+        crossAxisSpacing: 80.0,
         children: _getFlattenCells(cells)
           .map((Cell cell) {
             return GridTile(
