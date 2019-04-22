@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
               return GamePage();
             }
 
-            if (state is DataState || state == null) {
+            if (state is DataState || state == null || state is Logout) {
               return _homeWidget(() {
                 BlocProvider.of<GameBloc>(context).dispatch(WelcomeBlocEvent()); 
               });

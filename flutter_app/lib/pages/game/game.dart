@@ -12,6 +12,7 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   Widget _getGame() {
+    GameBloc _gameBloc = BlocProvider.of<GameBloc>(context);
     return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +27,9 @@ class _GamePageState extends State<GamePage> {
                   )
                 )
               ),  
-              PlayControls(() => BlocProvider.of<GameBloc>(context).dispatch(NewGameBlocEvent()) ),
+              PlayControls(
+                () => _gameBloc.dispatch(NewGameBlocEvent()),
+                () => _gameBloc.dispatch(LogoutBlocEvent()) ),
               Text('This is the score ${MediaQuery.of(context).size.height}'),
             ]
           )

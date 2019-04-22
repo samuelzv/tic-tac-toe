@@ -19,3 +19,6 @@ class LoginBlocEvent extends BlocEvent {
 
   LoginBlocEvent(this.username);
 }
+
+class LogoutBlocEvent extends BlocEvent {
+}

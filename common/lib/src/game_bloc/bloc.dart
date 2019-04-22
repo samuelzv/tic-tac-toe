@@ -33,6 +33,8 @@ class GameBloc extends Bloc<BlocEvent, DataState> {
       game.makeMovement(event.cellPosition);
 
       yield Movement(game.state);
+    } else if (event is LogoutBlocEvent) {
+      yield Logout(game.state);
     } else {
       yield null;
     }
