@@ -13,10 +13,7 @@ class _GamePageState extends State<GamePage> {
       appBar: AppBar(
         title: Text('Tic-Tac-Toe Game'),
       ),
-      body: 
-        Center(
-          child: Board(),
-        ),
+      body: Board(),
     );
   }
 }

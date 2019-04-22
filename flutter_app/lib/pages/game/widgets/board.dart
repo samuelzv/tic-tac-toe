@@ -6,9 +6,7 @@ import 'package:common/common.dart';
 class Board  extends StatelessWidget {
 
   Widget _board(List<List<Cell>> cells) {
-    return /*SizedBox(
-      height: 180.0,
-      child:*/ GridView.count(
+    return GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1.0,
         padding: EdgeInsets.all(3.0),
@@ -21,8 +19,7 @@ class Board  extends StatelessWidget {
             );
           }
         ).toList()
-      );
-    // );
+    );
   }
 
   List<Cell> _getFlattenCells(List<List<Cell>> cells) {
@@ -42,15 +39,24 @@ class Board  extends StatelessWidget {
     return BlocBuilder(
       bloc: BlocProvider.of<GameBloc>(context),
       builder: (BuildContext context, DataState gameState) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [ 
-            Text('This is a Header'),
-            Expanded(child:_board(gameState.cells)),  
-            Text('These are the play buttons'),
-            Text('This is the score'),
-          ]
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [ 
+              Text('This is a Header2'),
+              Expanded(
+                child: Center(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * .7 ,
+                    child: _board(gameState.cells) 
+                  )
+                )
+              ),  
+              Text('These are the play buttons'),
+              Text('This is the score ${MediaQuery.of(context).size.height}'),
+            ]
+          )
         );
       }
     );
