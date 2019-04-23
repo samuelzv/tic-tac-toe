@@ -5,6 +5,15 @@ import 'package:common/common.dart';
 class Score extends StatelessWidget {
   const Score();  
 
+  Widget _getScoreItem(String label, int value) {
+    return Column(
+      children: [
+        Text(label),
+        Text(value.toString()),
+      ]
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
@@ -14,22 +23,15 @@ class Score extends StatelessWidget {
           height: 120.0,
           child: Column(
             children: [
+              Text('Score'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('You'),
-                  Text('Computer'),
-                  Text('Ties')
+                  _getScoreItem('You', state.score.human),
+                  _getScoreItem('Computer', state.score.computer),
+                  _getScoreItem('Ties', state.score.tied),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(state.score.human.toString()),
-                  Text(state.score.computer.toString()),
-                  Text(state.score.tied.toString())
-                ],
-              )
             ],
           )
         );
