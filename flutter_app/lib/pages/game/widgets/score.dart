@@ -24,6 +24,7 @@ class Score extends StatelessWidget {
           child: Column(
             children: [
               Text('Score'),
+              SizedBox(height: 10.0,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

@@ -12,14 +12,22 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  Widget _getGame() {
+  Widget _getGame(DataState state) {
     GameBloc _gameBloc = BlocProvider.of<GameBloc>(context);
     return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [ 
-              Text('This is a Header2'),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  state.statusMessage,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold
+                  )
+                ),
+              ),
               Expanded(
                 child: Center(
                   child: Container(
@@ -32,7 +40,10 @@ class _GamePageState extends State<GamePage> {
                 onNewGame: () => _gameBloc.dispatch(NewGameBlocEvent()),
                 onLogout: () => _gameBloc.dispatch(LogoutBlocEvent()) 
               ),
-              Score(),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Score(),
+              ),
             ]
           )
         );
@@ -46,7 +57,7 @@ class _GamePageState extends State<GamePage> {
       body: BlocBuilder(
         bloc: BlocProvider.of<GameBloc>(context),
         builder: (BuildContext context, DataState state) {
-          return _getGame();
+          return _getGame(state);
         },
       ) 
     );

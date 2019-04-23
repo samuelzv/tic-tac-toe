@@ -15,7 +15,6 @@ class GameBloc extends Bloc<BlocEvent, DataState> {
     Game game = Game();
 
     if(event is WelcomeBlocEvent) {
-      print('Throwing a Welcome');
       yield Welcome(game.state);
     } else if (event is LoginBlocEvent) {
       game.username = event.username;
