@@ -5,11 +5,13 @@ class PlayControls extends StatelessWidget {
   final Function onNewGame; 
   final Function onLogout;
 
-  const PlayControls(this.onNewGame, this.onLogout); 
+  const PlayControls({this.onNewGame, this.onLogout}); 
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start, 
       children: <Widget>[
         RaisedButton(
           child: Text('New Game'),

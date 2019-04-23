@@ -4,6 +4,7 @@ import 'package:common/common.dart';
 
 import './widgets/board.dart';
 import './widgets/play_controls.dart';
+import './widgets/score.dart';
 
 class GamePage extends StatefulWidget {
   @override
@@ -22,15 +23,16 @@ class _GamePageState extends State<GamePage> {
               Expanded(
                 child: Center(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * .5 ,
+                    height: MediaQuery.of(context).size.height * .7 ,
                     child: GameBoard(),
                   )
                 )
               ),  
               PlayControls(
-                () => _gameBloc.dispatch(NewGameBlocEvent()),
-                () => _gameBloc.dispatch(LogoutBlocEvent()) ),
-              Text('This is the score ${MediaQuery.of(context).size.height}'),
+                onNewGame: () => _gameBloc.dispatch(NewGameBlocEvent()),
+                onLogout: () => _gameBloc.dispatch(LogoutBlocEvent()) 
+              ),
+              Score(),
             ]
           )
         );
