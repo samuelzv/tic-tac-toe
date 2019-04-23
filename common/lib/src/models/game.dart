@@ -64,10 +64,24 @@ class Game {
     } else {
       _shiftTurn();
     }
+    setStatusMessage();
   }
 
   void standoutWinningCombination() {
     _board.standoutWinningCombination(_gameState.winningCombination);
+  }
+
+  void setStatusMessage() {
+    if (_gameState.isGameOver) {
+      if (_gameState.phase == GamePhase.Tied) {
+        _gameState.statusMessage = 'Game tied';
+      } else {
+        final String action = _gameState.turn == Player.human ? 'win' : 'lose';
+        _gameState.statusMessage = '${_gameState.username}, you $action';
+      }
+    } else {
+        _gameState.statusMessage = (_gameState.turn == Player.human) ? 'Your turn' : 'Thinking...';
+    }
   }
 
   void _updateScore() {

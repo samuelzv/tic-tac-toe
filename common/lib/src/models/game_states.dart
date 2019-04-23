@@ -9,6 +9,7 @@ class DataState {
   String username; 
   Player turn = Player.human;
   GamePhase phase = GamePhase.Pristine;
+  String statusMessage = 'Your turn';
 
   DataState({this.cells});
 
@@ -22,6 +23,7 @@ class DataState {
     username = state.username;
     turn = state.turn;
     phase = state.phase;
+    statusMessage = state.statusMessage;
   }
   @override
   toString() {

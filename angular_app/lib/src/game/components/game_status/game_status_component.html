@@ -1,13 +1,1 @@
-<div *ngIf="gameState.isGameOver">
-    <div *ngIf="gameState.phase == GamePhase.Tied">
-        Game tied
-    </div>
-
-    <div *ngIf="gameState.phase != GamePhase.Tied">
-        <div>{{gameState.username}}, you {{gameState.turn == Player.human ? 'win!': 'lose'}}</div>
-    </div>
-</div>
-
-<div *ngIf="!gameState.isGameOver">
-    {{gameState.turn == Player.human ? 'Your turn' : 'Thinking...'}}
-</div>
+<div>{{gameState.statusMessage}}</div>
