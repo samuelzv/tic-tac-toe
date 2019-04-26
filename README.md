@@ -5,6 +5,8 @@ The goal of this repo is to implement a web app with Angular Dart and the mobile
 
 The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/packages/bloc) library.
 
+The state and functions to handle the game were isolated into the **common** library which contains the shared bloc logic.
+
 # Screenshots
 | Angular Dart App | Flutter App |
 |--|--|
