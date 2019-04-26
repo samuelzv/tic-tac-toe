@@ -1,16 +1,29 @@
-# flutter_app
+# Welcome to Tic Tac Toe
 
-A new Flutter project.
+# Goal
+The goal of this repo is to implement a web app with Angular Dart and the mobile version using Flutter, trying to share among them as much code as possible using the bloc pattern.
 
-## Getting Started
+The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/packages/bloc) library.
 
-This project is a starting point for a Flutter application.
+# Screenshots
+| Angular Dart App | Flutter App |
+|--|--|
+| ![](web.gif) | ![](mobile.gif) |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+#Cloning the repo
+git clone https://github.com/samuelzv/tic_tac_toe 
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+#Running Angular Dart App
+cd tic_tac_toe/angular_app
+pub get
+webdev serve
+
+#Running the Flutter App
+Setup your device
+
+cd tic_tac_toe/flutter_app
+flutter run
+
+
+
