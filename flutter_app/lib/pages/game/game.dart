@@ -51,7 +51,7 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tic-Tac-Toe Game'),
+        title: Text('Tic-Tac-Toe'),
       ),
       body: BlocBuilder(
         bloc: BlocProvider.of<GameBloc>(context),
