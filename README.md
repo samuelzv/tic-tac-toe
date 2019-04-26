@@ -8,7 +8,7 @@ The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/pac
 # Screenshots
 | Angular Dart App | Flutter App |
 |--|--|
-| ![](web.gif) | ![](mobile.gif) |
+| ![](tic_web_app.gif) | ![](tic_mobile_app.gif) |
 
 
 # Cloning the repo
