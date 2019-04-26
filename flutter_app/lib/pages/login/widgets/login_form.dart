@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
-  final Function _onLogin;
+  final Function onLogin;
 
-  LoginForm(this._onLogin); 
+  LoginForm({this.onLogin}); 
 
   @override
   _LoginFormState createState() => _LoginFormState() ;
@@ -26,9 +26,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _moveToGameScreen(String username) {
     if (_formKey.currentState.validate()) {
-      print('Moving to next window');
-      // print(this._gameState.username);
-      widget._onLogin(username);
+      widget.onLogin(username);
     }
   }
 
@@ -38,25 +36,30 @@ class _LoginFormState extends State<LoginForm> {
       child: Container(
         child: Form(
           key: _formKey,
-          child: Column(
-            children: <Widget>[
-              Text('Welcome!'),
-              SizedBox(height: _paddingHeight),
-              Text('What is your name?'),
-              TextFormField(
-                controller: _userTextController,
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return 'Your name is required';
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: _paddingHeight),
+                Text(
+                  'What is your name?',
+                  style: Theme.of(context).textTheme.title
+                ),
+                TextFormField(
+                  controller: _userTextController,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return 'Your name is required';
+                    }
                   }
-                }
-              ),
-              SizedBox(height: _paddingHeight),
-              RaisedButton(
-                onPressed: () => _moveToGameScreen(_userTextController.text),
-                child: Text('Login'),
-              )
-            ],
+                ),
+                SizedBox(height: _paddingHeight),
+                RaisedButton(
+                  onPressed: () => _moveToGameScreen(_userTextController.text),
+                  child: Text('Login'),
+                )
+              ],
+            )
           )
         ) 
       ) 

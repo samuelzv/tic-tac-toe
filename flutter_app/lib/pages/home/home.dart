@@ -7,7 +7,10 @@ import '../game/game.dart';
 
 class HomePage extends StatelessWidget {
 
-  Widget _homeWidget(Function onStart) {
+  Widget _homeWidget(BuildContext context, Function onStart) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+    final num padding = 20.0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome'),
@@ -16,7 +19,10 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Welcome, are you ready?'),
+              Text('Tic-Tac-Toe',style: textTheme.headline),
+              SizedBox(height: padding,),
+              Text('Are you ready?',style: textTheme.subhead),
+              SizedBox(height: padding,),
               RaisedButton(
                 child: Text('Start'),
                 onPressed: onStart ,
@@ -51,7 +57,7 @@ class HomePage extends StatelessWidget {
             }
 
             if (state is DataState || state == null || state is Logout) {
-              return _homeWidget(() {
+              return _homeWidget(context, () {
                 BlocProvider.of<GameBloc>(context).dispatch(WelcomeBlocEvent()); 
               });
             } 
