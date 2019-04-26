@@ -43,20 +43,23 @@ class _LoginFormState extends State<LoginForm> {
               children: <Widget>[
                 Text(
                   'Welcome to Tic-Tac-Toe',
-                  style: textTheme.title
+                  style: textTheme.headline
                 ),
                 SizedBox(height: _paddingHeight),
                 Text(
                   'What is your name?',
-                  style: textTheme.subtitle
+                  style: textTheme.title
                 ),
-                TextFormField(
-                  controller: _userTextController,
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return 'Your name is required';
+                SizedBox(
+                  width: 200.0,
+                  child: TextFormField(
+                    controller: _userTextController,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Your name is required';
+                      }
                     }
-                  }
+                  )
                 ),
                 SizedBox(height: _paddingHeight),
                 RaisedButton(
