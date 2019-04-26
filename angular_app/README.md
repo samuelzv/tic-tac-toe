@@ -11,15 +11,15 @@ The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/pac
 | ![](web.gif) | ![](mobile.gif) |
 
 
-#Cloning the repo
+# Cloning the repo
 git clone https://github.com/samuelzv/tic_tac_toe 
 
-#Running Angular Dart App
+# Running Angular Dart App
 cd tic_tac_toe/angular_app
 pub get
 webdev serve
 
-#Running the Flutter App
+# Running the Flutter App
 Setup your device
 
 cd tic_tac_toe/flutter_app
