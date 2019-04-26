@@ -31,19 +31,24 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   Widget _getForm(BuildContext context) {
+   TextTheme textTheme = Theme.of(context).textTheme;
+
     return  SingleChildScrollView(
-      // padding: EdgeInsets.all(8.0),
       child: Container(
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(40.0),
             child: Column(
               children: <Widget>[
+                Text(
+                  'Welcome to Tic-Tac-Toe',
+                  style: textTheme.title
+                ),
                 SizedBox(height: _paddingHeight),
                 Text(
                   'What is your name?',
-                  style: Theme.of(context).textTheme.title
+                  style: textTheme.subtitle
                 ),
                 TextFormField(
                   controller: _userTextController,

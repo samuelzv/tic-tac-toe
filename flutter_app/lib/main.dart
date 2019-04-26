@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:common/common.dart';
-import './pages/home/home.dart';
+import './pages/login/login.dart';
+import './pages/game/game.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -18,6 +19,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final GameBloc _gameBloc = GameBloc();
 
+  Widget getComponentByState(BuildContext context) {
+   return Container(
+      child: BlocBuilder(
+          bloc:  _gameBloc, //BlocProvider.of<GameBloc>(context),
+          builder: (BuildContext context, DataState state) {
+            return (state is Login || state is Movement || state is NewGame) ? GamePage() : LoginPage();
+          }
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: BlocProvider<GameBloc>(
         bloc: _gameBloc,
-        child: HomePage(),
+        child: getComponentByState(context),
       ) 
     );
   }
