@@ -4,6 +4,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
 
 class GameBoard  extends StatelessWidget {
+
+  BoxDecoration _getBorder(CellPosition position) {
+    BorderSide left, top, right, bottom; 
+    BorderSide defaultBorder = BorderSide(width: 5.0);
+
+    if (position.row == 0) {
+      top = BorderSide.none;
+    }
+
+    if (position.row == 2) {
+      bottom = BorderSide.none;
+    }
+
+    if (position.column == 0) {
+      left = BorderSide.none;
+    }
+
+    if (position.column == 2) {
+      right = BorderSide.none;
+    }
+
+    return BoxDecoration(
+      border: Border(
+        top: top ?? defaultBorder, 
+        left: left ?? defaultBorder, 
+        right: right ?? defaultBorder,
+        bottom: bottom ?? defaultBorder) 
+      );
+  }
+
   GridTile _getGridTile(DataState state, Cell cell, BuildContext context) {
     Icon icon;
     Color backgroundColor = Colors.white;
@@ -18,18 +48,15 @@ class GameBoard  extends StatelessWidget {
       backgroundColor =  (state.turn == Player.human) ?  Colors.blue :  Colors.red;
     }
 
-     return GridTile(
+    return GridTile(
         child: Container(
-          padding: EdgeInsets.all(25.0),
-          decoration: new BoxDecoration(
-            border: new Border.all(color: Colors.black)
-          ),
+          padding: EdgeInsets.all(15.0),
+          decoration: _getBorder(cell.position),
           child: FloatingActionButton(
             elevation: 0.0,
             child: icon,
             foregroundColor: foregroundColor, 
             backgroundColor: backgroundColor, 
-            // backgroundColor: new Color(0xFFE57373),
             onPressed: (){
               GameBloc gameBloc = BlocProvider.of<GameBloc>(context);
 

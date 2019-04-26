@@ -12,7 +12,8 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  Widget _getGame(DataState state) {
+  Widget _getGame(BuildContext context, DataState state) {
+    TextTheme theme = Theme.of(context).textTheme;
     GameBloc _gameBloc = BlocProvider.of<GameBloc>(context);
     return Center(
           child: Column(
@@ -23,9 +24,7 @@ class _GamePageState extends State<GamePage> {
                 padding: EdgeInsets.all(10.0),
                 child: Text(
                   state.statusMessage,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  )
+                  style: theme.title 
                 ),
               ),
               Expanded(
@@ -57,7 +56,7 @@ class _GamePageState extends State<GamePage> {
       body: BlocBuilder(
         bloc: BlocProvider.of<GameBloc>(context),
         builder: (BuildContext context, DataState state) {
-          return _getGame(state);
+          return _getGame(context, state);
         },
       ) 
     );
