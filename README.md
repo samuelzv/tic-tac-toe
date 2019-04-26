@@ -16,12 +16,15 @@ git clone https://github.com/samuelzv/tic_tac_toe
 
 # Running Angular Dart App
 cd tic_tac_toe/angular_app
+
 pub get
+
 webdev serve
 
 # Running the Flutter App
 Setup your device
 
 cd tic_tac_toe/flutter_app
+
 flutter run
 
