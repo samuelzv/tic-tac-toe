@@ -1,10 +1,29 @@
-# angular_app
-
-A web app that uses [AngularDart](https://webdev.dartlang.org/angular) and
-[AngularDart Components](https://webdev.dartlang.org/components).
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+# Welcome to Tic Tac Toe
 
 # Goal
-- The goal is to implement the noughts and crosses game for the web using Angular Dart, the version mobile will be implemented on Flutter, the intention is try to share as much code as possible among these applications using the bloc pattern. 
+The goal of this repo is to implement a web app with Angular Dart and the mobile version using Flutter, trying to share among them as much code as possible using the bloc pattern.
+
+The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/packages/bloc) library.
+
+# Screenshots
+| Angular Dart App | Flutter App |
+|--|--|
+| ![](web.gif) | ![](mobile.gif) |
+
+
+#Cloning the repo
+git clone https://github.com/samuelzv/tic_tac_toe 
+
+#Running Angular Dart App
+cd tic_tac_toe/angular_app
+pub get
+webdev serve
+
+#Running the Flutter App
+Setup your device
+
+cd tic_tac_toe/flutter_app
+flutter run
+
+
+
