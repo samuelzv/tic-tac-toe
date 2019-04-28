@@ -3,9 +3,9 @@
 # Goal
 The goal of this repo is to implement a web app with Angular Dart and the mobile version using Flutter, trying to share among them as much code as possible using the bloc pattern.
 
-The bloc behaviour was implemented using the [bloc](https://pub.dartlang.org/packages/bloc) library.
+The bloc behaviour was implemented using the [bloc] library (https://pub.dartlang.org/packages/bloc).
 
-The state and functions to handle the game were isolated into the **common** library which contains the shared bloc logic.
+The state and functions to handle the game were isolated into the **common** folder which contains the shared bloc logic.
 
 # Screenshots
 | Angular Dart App | Flutter App |
@@ -14,10 +14,10 @@ The state and functions to handle the game were isolated into the **common** lib
 
 
 # Cloning the repo
-git clone https://github.com/samuelzv/tic_tac_toe 
+git clone https://github.com/samuelzv/tic-tac-toe 
 
 # Running Angular Dart App
-cd tic_tac_toe/angular_app
+cd tic-tac-toe/angular_app
 
 pub get
 
@@ -26,7 +26,7 @@ webdev serve
 # Running the Flutter App
 Setup your device
 
-cd tic_tac_toe/flutter_app
+cd tic-tac-toe/flutter_app
 
 flutter run
 
